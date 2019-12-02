@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
+
 .App {
   background-color: #282c34;
   min-height: 100vh;
@@ -5,11 +7,48 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(235, 214, 214);;
+  color: rgb(235, 214, 214);
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
-.flipBox {
+.flipCard {
+  background-color: transparent;
+  width: 80%;
+  height: 40px;
+  perspective: 1000px;
+}
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipCard:hover .flipCardInner {
+  transform: rotateX(180deg);
+  cursor: pointer;
+}
+
+.flipBoxFront, .flipBoxBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flipBoxFront {
   border: 1px solid;
-  padding: 0.5%;
+}
+
+.flipBoxBack {
+  background-color: rgb(235, 214, 214);
+  color: #282c34;
+  transform: rotateX(180deg);
+  border: 1px solid;
+  font-style: italic;
 }
