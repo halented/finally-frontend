@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
+// import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <div className="flipCard">
-        <div className="flipCardInner">
-          <div className='flipBoxFront'>
-          FINALLY! AN APP FOR EXTROVERTS
+import Signup from './components/Signup'
+
+class App extends Component {
+
+  state = {
+    showSignUp: false
+  }
+
+  makeSignUpTrue = () => {
+    this.setState({showSignUp: true})
+  }
+  render(){
+    return (
+      <>
+        {this.state.showSignUp ? 
+          <Signup />
+          :
+          <div className="App">
+            <div className="flipCard">
+              <div className="flipCardInner">
+                <div className='flipBoxFront'>
+                <span id='finally'>FINALLY! </span>AN APP FOR EXTROVERTS
+                </div>
+                <div className="flipBoxBack" onClick={this.makeSignUpTrue}>
+                  CLICK HERE TO GET STARTED
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flipBoxBack">
-            CLICK HERE TO GET STARTED
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+          }
+      </>
+    );
+  }
 }
 
 export default App;

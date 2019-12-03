@@ -2,7 +2,7 @@
 
 Are you an extrovert? Do you find yourself confused and inept when it comes to respecting the needs of your introvert friends?
 
-Finally, there is an app for you! With FINALLY, AN APP FOR EXTROVERTS, you can:
+Finally, there is an app for you! With **FINALLY!** AN APP FOR EXTROVERTS, you can:
 
 * Log your introvert friends and their custom quiet time needs!
 * Get automatically notified when one of you introvert friends is ready to hang out!
