@@ -7,7 +7,7 @@ import Signup from './components/Signup'
 class App extends Component {
 
   state = {
-    showSignUp: false
+    showSignUp: true
   }
 
   makeSignUpTrue = () => {

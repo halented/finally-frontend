@@ -73,3 +73,8 @@
  input {
   box-shadow: 5px 5px #1b1e24;
  }
+
+ #signup-icon {
+  width: calc(70px + 2vmin);
+  margin-bottom: 5%;
+ }
