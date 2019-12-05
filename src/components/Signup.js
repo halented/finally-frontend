@@ -10,7 +10,7 @@ export default class Signup extends Component {
                     <br/>
                     <input placeholder='username' name='username'></input>
                     <br/>
-                    <input placeholder='password' name='password'></input>
+                    <input placeholder='password' name='password' type='password'></input>
                     <br/>
                     <button type='submit'>Submit</button>
                     <br/>
