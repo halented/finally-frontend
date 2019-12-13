@@ -12,7 +12,7 @@
   color: rgb(235, 214, 214);
   font-family: 'Open Sans Condensed', sans-serif;
 }
-
+/* homepage styling */
 .flipCard {
   background-color: transparent;
   width: 80%;
@@ -61,6 +61,8 @@
    color: inherit;
  }
 
+ /* generalized, app-wide styling */
+
  button {
   background-color: rgb(235, 214, 214);
   color: #282c34;
@@ -70,11 +72,22 @@
   box-shadow: 5px 5px #1b1e24;
  }
 
+ button:hover {
+   cursor: pointer;
+  }
+
  input {
   box-shadow: 5px 5px #1b1e24;
  }
+ /* ------------------------------------ */
 
+ /* signup/signin page styling */
  #signup-icon {
   width: calc(70px + 2vmin);
   margin-bottom: 5%;
  }
+
+ .disabled {
+   opacity: .6;
+ }
+ /* ------------------------------------ */
