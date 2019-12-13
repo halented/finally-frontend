@@ -8,35 +8,40 @@ export default class Signup extends Component {
         username: '',
         email: '',
         password: '',
-        isDisabled: true
+        isDisabled: true,
+        buttonClass: 'disabled'
     }
 
     signUpOrIn = (ev) => {
         ev.preventDefault()
         let postData = {email: this.state.email, username: this.state.username, password: this.state.password}
+        console.log('submitted')
+
         // fetch("http://localhost:3000/auth", {
         //     method: 'POST',
         //     headers: {
         //         Application: 'application/json',
         //         "Content-Type": 'application/json'
-        //     }
+        //     },
+        //     body: JSON.stringify(postData)
         // })
-        console.log("submitted")
+        // .then(res=>res.json())
+        // .then(console.log)
     }
 
     handleChange = (ev) => {
+        this.setState({[ev.target.name]: ev.target.value}, this.validator)
+    }
+
+    validator = () => {
         // validates that all fields have content
-        const inputs = document.getElementsByTagName('input')
-        if(inputs.email.value && inputs.username.value && inputs.password.value){
-            this.setState({[ev.target.name]: ev.target.value, isDisabled: false})
-            let btn = document.getElementsByTagName('button')[0]
-            btn.className=''
-        }
-        else {
-            this.setState({[ev.target.name]: ev.target.value})
-            console.log()
+        if(this.state.password && this.state.email && this.state.username){
+            this.setState({isDisabled: false, buttonClass: ''})
+
         }
     }
+    // refactor to use function to build button dynamically in a clickable or unclickable way dependent upon the state
+
     render(){
         return (
             <div className='App'>
@@ -49,7 +54,7 @@ export default class Signup extends Component {
                     <br/>
                     <input placeholder='password' name='password' type='password' onChange={(ev)=>{this.handleChange(ev)}}></input>
                     <br/>
-                    <button type='submit' disabled={this.state.isDisabled} className='disabled'>SUBMIT</button>
+                    <button type='submit' disabled={this.state.isDisabled} className={this.state.buttonClass}>SUBMIT</button>
                     <br/>
                 </form>
             </div>
