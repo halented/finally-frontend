@@ -16,18 +16,20 @@ export default class Signup extends Component {
         ev.preventDefault()
         let postData = {email: this.state.email, username: this.state.username, password: this.state.password}
         console.log('submitted')
+        // fetch to get from users, and if there is no user, .then(fetch post) to users. then post to auth.
 
-        // fetch("http://localhost:3000/auth", {
-        //     method: 'POST',
-        //     headers: {
-        //         Application: 'application/json',
-        //         "Content-Type": 'application/json'
-        //     },
-        //     body: JSON.stringify(postData)
-        // })
-        // .then(res=>res.json())
-        // .then(console.log)
+        fetch("http://localhost:3000/users", {
+            method: 'GET',
+            headers: {
+                Application: 'application/json',
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(postData)
+        })
+        .then(res=>res.json())
+        .then(console.log)
     }
+    // it helps to abstract in the fetch, just hand it things like "headers" which is a function that returns the right object
 
     handleChange = (ev) => {
         this.setState({[ev.target.name]: ev.target.value}, this.validator)
@@ -40,7 +42,7 @@ export default class Signup extends Component {
 
         }
     }
-    // refactor to use function to build button dynamically in a clickable or unclickable way dependent upon the state
+    // refactor function to build button dynamically in a clickable or unclickable way dependent upon the state
 
     render(){
         return (
