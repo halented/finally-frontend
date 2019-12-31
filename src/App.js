@@ -7,33 +7,53 @@ import Signup from './components/Signup'
 class App extends Component {
 
   state = {
-    showSignUp: true
+    show: "preshow"
   }
 
   makeSignUpTrue = () => {
-    this.setState({showSignUp: true})
+    this.setState({show: "signup"})
   }
-  render(){
-    return (
-      <>
-        {this.state.showSignUp ? 
-          <Signup />
-          :
-          <div className="App">
-            <div className="flipCard">
-              <div className="flipCardInner">
-                <div className='flipBoxFront'>
-                <span id='finally'>FINALLY! </span>AN APP FOR EXTROVERTS
-                </div>
-                <div className="flipBoxBack" onClick={this.makeSignUpTrue}>
-                  CLICK HERE TO GET STARTED
+
+  login = () => {
+    console.log("sup")
+  }
+
+  conditionalRender = () => {
+    switch(this.state.show) {
+      case "preshow":
+        return (
+          <>
+            <div className="App">
+              <div className="flipCard">
+                <div className="flipCardInner">
+                  <div className='flipBoxFront'>
+                  <span id='finally'>FINALLY! </span>AN APP FOR EXTROVERTS
+                  </div>
+                  <div className="flipBoxBack" onClick={this.makeSignUpTrue}>
+                    CLICK HERE TO GET STARTED
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          }
-      </>
-    );
+          </>
+        )
+        break;
+
+      case "signup":
+        return <Signup login={this.login}/>
+        break;
+
+      case "loggedIn":
+        return <div>idk</div>
+        break;
+
+      default:
+        return <div>l o a d i n g . . .</div>
+    }
+  }
+
+  render(){
+    return this.conditionalRender()
   }
 }
 

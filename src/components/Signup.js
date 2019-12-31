@@ -19,7 +19,7 @@ export default class Signup extends Component {
         // fetch to get from users, and if there is no user, .then(fetch post) to users. then post to auth.
 
         fetch("http://localhost:3000/users", {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 Application: 'application/json',
                 "Content-Type": 'application/json'
@@ -28,11 +28,13 @@ export default class Signup extends Component {
         })
         .then(res=>res.json())
         .then(console.log)
+        // eventually, store the JWT token into localStorage, and then fire this.props.login to change what is being rendered by App.
     }
     // it helps to abstract in the fetch, just hand it things like "headers" which is a function that returns the right object
 
     handleChange = (ev) => {
         this.setState({[ev.target.name]: ev.target.value}, this.validator)
+        // second argument for setState is a function to run once the state is set
     }
 
     validator = () => {
@@ -40,6 +42,9 @@ export default class Signup extends Component {
         if(this.state.password && this.state.email && this.state.username){
             this.setState({isDisabled: false, buttonClass: ''})
 
+        }
+        else {
+            this.setState({isDisabled: true, buttonClass: 'disabled'})
         }
     }
     // refactor function to build button dynamically in a clickable or unclickable way dependent upon the state
