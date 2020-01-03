@@ -30,7 +30,7 @@ export default class Signup extends Component {
             console.log(json)
             if(!!json.user){
                 localStorage.setItem("token", json.token)
-                this.props.login()
+                this.props.login('loggedIn')
             }
             else {
                 alert(json.error)

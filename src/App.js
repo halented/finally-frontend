@@ -7,25 +7,21 @@ import Signup from './components/Signup'
 class App extends Component {
 
   state = {
-    show: "signup"
+    show: "preshow"
   }
 
-  makeSignUpTrue = () => {
-    this.setState({show: "signup"})
-  }
-
-  login = () => {
-    this.setState({show: 'loggedIn'})
+  changeShow = (type) => {
+    this.setState({show: type})
   }
 
   conditionalRender = () => {
     if(localStorage.getItem('token')){
-      return <div>idk</div>
+      return <div className='App'>idk</div>
     }
     else {
       switch(this.state.show) {
         case "loggedIn":
-          return <div>idk</div>
+          return <div className='App'>idk</div>
           break;
   
         case "preshow":
@@ -37,7 +33,7 @@ class App extends Component {
                     <div className='flipBoxFront'>
                     <span id='finally'>FINALLY! </span>AN APP FOR EXTROVERTS
                     </div>
-                    <div className="flipBoxBack" onClick={this.makeSignUpTrue}>
+                    <div className="flipBoxBack" onClick={()=>this.changeShow('signup')}>
                       CLICK HERE TO GET STARTED
                     </div>
                   </div>
@@ -48,12 +44,12 @@ class App extends Component {
           break;
   
         case "signup":
-          return <Signup login={this.login}/>
+          return <Signup login={this.changeShow}/>
           break;
   
   
         default:
-          return <div>l o a d i n g . . .</div>
+          return <div className='App'>l o a d i n g . . .</div>
       }
     }
   }
