@@ -15,10 +15,9 @@ export default class Signup extends Component {
     signUpOrIn = (ev) => {
         ev.preventDefault()
         let postData = {email: this.state.email, username: this.state.username, password: this.state.password}
-        console.log('submitted')
         // fetch to get from users, and if there is no user, .then(fetch post) to users. then post to auth.
 
-        fetch("http://localhost:3000/users", {
+        fetch("http://localhost:3000/auth", {
             method: 'POST',
             headers: {
                 Application: 'application/json',
@@ -27,7 +26,17 @@ export default class Signup extends Component {
             body: JSON.stringify(postData)
         })
         .then(res=>res.json())
-        .then(console.log)
+        .then(json=> {
+            console.log(json)
+            if(!!json.user){
+                localStorage.setItem("token", json.token)
+                this.props.login()
+            }
+            else {
+                alert(json.error)
+            }
+        })
+
         // eventually, store the JWT token into localStorage, and then fire this.props.login to change what is being rendered by App.
     }
     // it helps to abstract in the fetch, just hand it things like "headers" which is a function that returns the right object
@@ -38,7 +47,7 @@ export default class Signup extends Component {
     }
 
     validator = () => {
-        // validates that all fields have content
+        // ensures that all fields have content
         if(this.state.password && this.state.email && this.state.username){
             this.setState({isDisabled: false, buttonClass: ''})
 
