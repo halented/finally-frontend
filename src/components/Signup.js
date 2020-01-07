@@ -33,7 +33,7 @@ export default class Signup extends Component {
                 this.props.login('loggedIn')
             }
             else {
-                alert(json.error)
+                json.error ? alert(json.error) : alert("Something went wrong.")
             }
         })
 

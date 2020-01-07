@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 //  Route, NavLink, Switch, Redirect 
 import './App.css';
 
 import Signup from './components/Signup';
 import Navbar from './components/Navbar';
+import Infopage from './components/Infopage';
+import Landing from './components/Landing';
+
 
 class App extends Component {
 
@@ -38,23 +41,19 @@ class App extends Component {
         case "preshow":
           return (
             <>
-              <div className='App'>
-                <div className="flipCard">
-                  <div className="flipCardInner">
-                    <div className='flipBoxFront'>
-                    <span id='finally'>FINALLY! </span>AN APP FOR EXTROVERTS
-                    </div>
-                    <div className="flipBoxBack" onClick={()=>this.changeShow('signup')}>
-                      CLICK HERE TO GET STARTED
-                    </div>
-                  </div>
-                </div>
-                  <p className='infoLinks'> 
-                    <span><a href='link to about page'> About</a> |</span>
-                    <span> <a href='https://github.com/halented/finally-frontend'>Github</a> | </span>
-                    <span><a href='link to info on me'> Author</a></span> 
-                  </p>
-              </div>
+            <Router>
+              <Switch>
+                <Route exact path='/'>
+                  <Landing changeShow={this.changeShow}/>
+                </Route>
+                <Route exact path='/about'>
+                  <Infopage trait='about'/>
+                </Route>
+                <Route exact path='/author'>
+                  <Infopage trait='author'/>
+                </Route>
+              </Switch>
+            </Router>
             </>
           )
 
