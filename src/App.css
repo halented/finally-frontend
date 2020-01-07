@@ -83,6 +83,18 @@
 .infoLinks {
   font-size: smaller;
 }
+
+b {
+  font-weight: normal;
+}
+b:hover{
+  cursor: pointer;
+}
+
+.infoIcon {
+  max-width: 20%;
+}
+
  /* ------------------------------------ */
 
  /* SIGNIN PAGE STYLING */
