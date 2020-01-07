@@ -37,7 +37,7 @@ export default class Signup extends Component {
             }
         })
 
-        // eventually, store the JWT token into localStorage, and then fire this.props.login to change what is being rendered by App.
+        // store the JWT token into localStorage, and then fire this.props.login to change what is being rendered by App.
     }
     // it helps to abstract in the fetch, just hand it things like "headers" which is a function that returns the right object
 

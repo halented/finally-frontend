@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
 
- /* generalized, app-wide styling */
+ /* GENERALIZED, APP-WIDE STYLING */
 .App {
   background-color: #282c34;
   min-height: 100vh;
@@ -21,15 +21,23 @@
   font-size: medium;
   border-radius: 3px;
   box-shadow: 5px 5px #1b1e24;
+  margin: 10%;
  }
 
  input {
   box-shadow: 5px 5px #1b1e24;
  }
+
+ a {
+   text-decoration: none;
+   color: inherit;
+ }
  /* ------------------------------------ */
 
-/* homepage styling */
+/* LANDING PAGE STYLING */
+
 .flipCard {
+  margin: 40vh;
   background-color: transparent;
   width: 80%;
   height: 40px;
@@ -72,13 +80,12 @@
   border: 1px solid;
 }
 
- .navlinks {
-   text-decoration: none;
-   color: inherit;
- }
+.infoLinks {
+  font-size: smaller;
+}
  /* ------------------------------------ */
 
- /* signup/signin page styling */
+ /* SIGNIN PAGE STYLING */
  #signup-icon {
   width: calc(70px + 2vmin);
   margin-bottom: 5%;
@@ -88,3 +95,14 @@
    opacity: .6;
  }
  /* ------------------------------------ */
+
+ /* NAV MENU STYLING */
+ .navlinks {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navmenu {
+ background-color: black;
+}
+/* ------------------------------------ */
