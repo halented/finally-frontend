@@ -3,16 +3,18 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 //  Route, NavLink, Switch, Redirect 
 import './App.css';
 
-import Signup from './components/Signup';
-import Navbar from './components/Navbar';
-import Infopage from './components/Infopage';
-import Landing from './components/Landing';
+import Signup from './components/pre-site-stuff/Signup';
+import Navbar from './components/pre-site-stuff/Navbar';
+import Infopage from './components/pre-site-stuff/Infopage';
+import Landing from './components/pre-site-stuff/Landing';
+
+import Home from './components/main-site-stuff/Home'
 
 
 class App extends Component {
 
   state = {
-    show: "preshow"
+    show: "loggedIn"
   }
 
   changeShow = (type) => {
@@ -24,6 +26,11 @@ class App extends Component {
       <Router>
         <div className='App'>
           <Navbar />
+          <Home />
+
+          <Route exact path='home'>
+              <Home />
+          </Route>
         </div>
       </Router>
     )
