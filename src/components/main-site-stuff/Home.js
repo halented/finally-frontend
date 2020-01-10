@@ -9,7 +9,9 @@ const thisStyle = {
         gridTemplateColumns: 'repeat(6, 1fr)',
         gridTemplateRows: 'repeat(5, 1fr)'
     },
-    topFriends: {
+    topFriendsDiv: {
+        display: 'flex',
+        margin: 'auto',
         gridArea: '1 / 2 / 4 / 6'
     },
     addFriend: {
@@ -22,7 +24,7 @@ const thisStyle = {
 
 class Home extends Component {
     state= {
-        topFriends: []
+        topFriends: ["john", "john2", 'john3']
     }
 
     componentDidMount(){
@@ -32,8 +34,12 @@ class Home extends Component {
     render(){
         return (
             <div style={thisStyle.base}>
-                <div style={thisStyle.topFriends}>Box full of friends</div>
-                <div style={thisStyle.addFriend}>form to add a friend</div>
+                <div style={thisStyle.topFriendsDiv}>{
+                    this.state.topFriends.map(bud=>{
+                        return <p>{bud} </p>
+                    })
+                }</div>
+                <div style={thisStyle.addFriend}>form to add an introvert</div>
                 <div style={thisStyle.addHang}>form to add a hangout</div>
             </div>
         )
