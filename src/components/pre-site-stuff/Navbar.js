@@ -22,15 +22,14 @@ var styles = {
     },
     indicator: {
         display: 'flex',
-        position: 'absolute',
+        position: 'fixed',
         right: '25%',
-        marginTop: '5%',
+        alignSelf: 'center',
         fontSize: 'larger',
         boxShadow: '0 0 12px 6px lightgrey, 0 0 20px 12px rgb(235, 214, 214), 0 0 28px 18px #0ff',
         backgroundColor: 'rgb(235, 214, 214)',
         borderRadius: '50%',
         color: 'lightblue',
-        opacity: '.85',
         maxWidth: '7%'
     }
 }
