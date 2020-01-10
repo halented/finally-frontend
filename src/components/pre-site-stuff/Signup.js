@@ -1,8 +1,30 @@
-import React, { Component } from 'react'
-import icon from '../../images/icon.png'
+import React, { Component } from 'react';
+import icon from '../../images/icon.png';
+import { styles } from '../../Styles';
+import Radium from 'radium';
 
+var thisStyle = {
+    base: {
+        justifyContent: 'center'
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '30vh',
+        alignItems: 'center',
+        alignSelf: 'center',
+    },
+    input: {
+        margin: '7.5%'
+    },
+    img: {
+        alignSelf: 'center',
+        width: 'calc(70px + 2vmin)',
+        marginBottom: '5%'
+    }
+}
 
-export default class Signup extends Component {
+class Signup extends Component {
 
     state = {
         username: '',
@@ -15,7 +37,6 @@ export default class Signup extends Component {
     signUpOrIn = (ev) => {
         ev.preventDefault()
         let postData = {email: this.state.email, username: this.state.username, password: this.state.password}
-        // fetch to get from users, and if there is no user, .then(fetch post) to users. then post to auth.
 
         fetch("http://localhost:3000/auth", {
             method: 'POST',
@@ -35,6 +56,8 @@ export default class Signup extends Component {
             else {
                 json.error ? alert(json.error) : alert("Something went wrong.")
             }
+        }).catch(function() {
+            alert("Something went wrong.");
         })
 
         // store the JWT token into localStorage, and then fire this.props.login to change what is being rendered by App.
@@ -57,23 +80,36 @@ export default class Signup extends Component {
         }
     }
     // refactor function to build button dynamically in a clickable or unclickable way dependent upon the state
-
+    // in the below, change form to flex box and flex direction column see if we can get rid of those messy brs
     render(){
         return (
-            <div className='App'>
-                <img src={icon} id='signup-icon' alt='Finally! App Icon'></img>
+            <div className='App' style={thisStyle.base}>
+                <img src={icon} style={thisStyle.img} alt='Finally! App Icon'></img>
                 ENTER DETAILS BELOW
-                <form onSubmit={(ev)=>{this.signUpOrIn(ev)}}>
-                    <input placeholder='email' name='email' onChange={(ev)=>{this.handleChange(ev)}}></input>
-                    <br/>
-                    <input placeholder='username' name='username' onChange={(ev)=>{this.handleChange(ev)}}></input>
-                    <br/>
-                    <input placeholder='password' name='password' type='password' onChange={(ev)=>{this.handleChange(ev)}}></input>
-                    <br/>
-                    <button type='submit' disabled={this.state.isDisabled} className={this.state.buttonClass}>SUBMIT</button>
-                    <br/>
+                <form onSubmit={(ev)=>{this.signUpOrIn(ev)}} style={thisStyle.form}>
+                    <input 
+                        placeholder='email' 
+                        name='email' 
+                        onChange={(ev)=>{this.handleChange(ev)}}
+                        style={thisStyle.input} 
+                    />
+                    <input 
+                        placeholder='username' 
+                        name='username' 
+                        onChange={(ev)=>{this.handleChange(ev)}}
+                        style={thisStyle.input} 
+                    />
+                    <input 
+                        placeholder='password' 
+                        name='password' type='password' 
+                        onChange={(ev)=>{this.handleChange(ev)}}
+                        style={thisStyle.input} 
+                    />
+                    <button type='submit' disabled={this.state.isDisabled} className={this.state.buttonClass} style={styles.button}>SUBMIT</button>
                 </form>
             </div>
         )
     }
 }
+
+export default Radium(Signup)

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 //  Route, NavLink, Switch, Redirect 
 import './App.css';
+import { styles } from './Styles.js';
 
 import Signup from './components/pre-site-stuff/Signup';
 import Navbar from './components/pre-site-stuff/Navbar';
@@ -14,7 +15,7 @@ import Home from './components/main-site-stuff/Home'
 class App extends Component {
 
   state = {
-    show: "loggedIn"
+    show: "signup"
   }
 
   changeShow = (type) => {

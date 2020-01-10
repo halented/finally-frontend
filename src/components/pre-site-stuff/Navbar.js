@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Radium from 'radium';
-
-const Wrapper = Radium(Link)
 
 
 var styles = {
@@ -15,35 +13,21 @@ var styles = {
         boxShadow: '0 0 10px #000000',
         display: 'flex',
         flexDirection: 'column',
-    },
-    otra: {
-        ':hover': {
-        backgroundColor: 'red'
-        },
-    
-        ':focus': {
-        backgroundColor: 'green'
-        },
-    
-        ':active': {
-        backgroundColor: 'yellow'
-        }
     }
 }
-// rgb(154, 218, 240)
 
 class Navbar extends React.Component{
 
     render(){
         return (
          <div key='1' style={styles.base}>
-            <Wrapper to='home' key='2' style={{':hover': {background: 'black'}}}>
+            <NavLink to='home' className='infoLinks'>
                 Home
-            </Wrapper>
-            <Link to='/home' >Introverts</Link>
-            <Link to='/home' >Hangouts</Link>
-            <Link to='/home' >Metrics</Link>
-            <Link to='/home' >Settings</Link>
+            </NavLink>
+            <NavLink to='/home' className='infoLinks' >Introverts</NavLink>
+            <NavLink to='/home' className='infoLinks' >Hangouts</NavLink>
+            <NavLink to='/home' className='infoLinks' >Metrics</NavLink>
+            <NavLink to='/home' className='infoLinks' >Settings</NavLink>
          </div> 
         )
     }

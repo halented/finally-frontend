@@ -20,11 +20,11 @@ export default function Navbar(props){
                 </div>
             }
          </div>
-        <p className='infoLinks'> 
-            <span><NavLink to='about'> About</NavLink> |</span>
-            <span> <b onClick={()=>window.open('https://github.com/halented/finally-frontend')}>Github</b> | </span>
-            <span><NavLink to='author'> Author</NavLink> |</span>
-            <span><NavLink to='/'> Go Back</NavLink></span>
+        <p> 
+            <span><NavLink to='about' className='infoLinks'> About</NavLink> |</span>
+            <span> <b onClick={()=>window.open('https://github.com/halented/finally-frontend')} className='infoLinks'>Github</b> | </span>
+            <span><NavLink to='author' className='infoLinks'> Author</NavLink> |</span>
+            <span><NavLink to='/' className='infoLinks'> Go Back</NavLink></span>
         </p>
      </div> 
     )
