@@ -31,6 +31,7 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path='/home' component={Home}/>
+            <Route exact path='/' component={Home}/>
             <Route exact path='/introverts' component={Introverts}/>
             <Route exact path='/hangouts' component={Hangouts}/>
             <Route exact path='/metrics' component={Metrics}/>

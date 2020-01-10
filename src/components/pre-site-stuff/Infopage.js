@@ -29,6 +29,8 @@ function Infopage(props){
                 <div style={thisStyle.block}>
                     <img src={me} className='infoIcon' alt='app creator, hal dunn'/>
                     <span style={{fontWeight: 'bold', fontSize: 'larger'}}>Hal</span> (she/they) is a proud introvert and developer who is seeking a workplace they can call home. They are a driven individual, loving dog parent, devoted partner, and currently in training to compete at the world's strongest man competition in 2021. She is able to complete one pushup so far. Luckily, they are much more adept at programming than lifting. If you are interested in hiring her, please send a message to <span style={{fontWeight: 'bold'}}>heyHal@halented.com</span> or message them on <a href='https://linkedin.com/in/halented' style={{color: 'lightblue'}}>LinkedIn</a>.
+                    <br/>
+                    <b style={{fontSize: 'smaller', fontStyle: 'italic'}}>Icon for FINALLY! was made by Hal, vector images were made by <a href="https://www.vecteezy.com/free-vector/animal-avatar" style={{color: 'lightblue'}}>Vecteezy.</a></b> 
                 </div>
             }
          </div>
