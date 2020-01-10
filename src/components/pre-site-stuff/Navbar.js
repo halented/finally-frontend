@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Radium from 'radium';
+import icon from '../../images/icon.png'
 
 
 var styles = {
@@ -11,8 +12,26 @@ var styles = {
         MozBoxShadow: '0 0 10px #000000',
         'WebkitBoxShadow': '0 0 10px #000000',
         boxShadow: '0 0 10px #000000',
+        flexDirection: 'row',
+        display: 'flex',
+    },
+    linkBox: {
         display: 'flex',
         flexDirection: 'column',
+        marginLeft: '25%'
+    },
+    indicator: {
+        display: 'flex',
+        position: 'absolute',
+        right: '25%',
+        marginTop: '5%',
+        fontSize: 'larger',
+        boxShadow: '0 0 12px 6px lightgrey, 0 0 20px 12px rgb(235, 214, 214), 0 0 28px 18px #0ff',
+        backgroundColor: 'rgb(235, 214, 214)',
+        borderRadius: '50%',
+        color: 'lightblue',
+        opacity: '.85',
+        maxWidth: '7%'
     }
 }
 
@@ -21,13 +40,39 @@ class Navbar extends React.Component{
     render(){
         return (
          <div key='1' style={styles.base}>
-            <NavLink to='home' className='infoLinks'>
-                Home
-            </NavLink>
-            <NavLink to='/home' className='infoLinks' >Introverts</NavLink>
-            <NavLink to='/home' className='infoLinks' >Hangouts</NavLink>
-            <NavLink to='/home' className='infoLinks' >Metrics</NavLink>
-            <NavLink to='/home' className='infoLinks' >Settings</NavLink>
+            <div style={styles.linkBox}>
+                <NavLink 
+                    exact to='/home' 
+                    className='infoLinks'
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Home
+                </NavLink>
+                <NavLink 
+                    exact to='/introverts' 
+                    className='infoLinks' 
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Introverts
+                </NavLink>
+                <NavLink 
+                    exact to='/hangouts' 
+                    className='infoLinks'
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Hangouts
+                </NavLink>
+                <NavLink 
+                    exact to='/metrics' 
+                    className='infoLinks'
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Metrics
+                </NavLink>
+                <NavLink 
+                    exact to='/settings' 
+                    className='infoLinks'
+                    activeStyle={{fontWeight: 'bold'}}>
+                    Settings
+                </NavLink>
+             </div>
+            <img style={styles.indicator} src={icon} alt='finally app logo'></img>
          </div> 
         )
     }
@@ -35,46 +80,3 @@ class Navbar extends React.Component{
 }
 
 export default Radium(Navbar)
-
-// var styles = {
-//     base: {
-//       background: 'blue',
-//       border: 0,
-//       borderRadius: 4,
-//       color: 'white',
-//       padding: '1.5em',
-  
-//       ':hover': {
-//         backgroundColor: 'red'
-//       },
-  
-//       ':focus': {
-//         backgroundColor: 'green'
-//       },
-  
-//       ':active': {
-//         backgroundColor: 'yellow'
-//       },
-//     },
-  
-//     block: {
-//       display: 'block',
-  
-//       ':hover': {
-//         boxShadow: '0 3px 0 rgba(0,0,0,0.2)'
-//       }
-//     },
-//   };
-  
-//   class PageCard extends React.Component {
-//     render() {
-//         return (
-//         <div key="1" style={styles.base}>
-//             words in first div
-//             <div key="2" style={styles.block}>words in second div</div>
-//         </div>
-//         );
-//     }
-//   }
-  
-//   export default Radium(PageCard);

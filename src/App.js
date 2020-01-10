@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-//  Route, NavLink, Switch, Redirect 
+import { HashRouter as Router, Route, Switch} from 'react-router-dom'
+//  NavLink Redirect 
 import './App.css';
-// import { styles } from './Styles.js';
-
 import Signup from './components/pre-site-stuff/Signup';
 import Navbar from './components/pre-site-stuff/Navbar';
 import Infopage from './components/pre-site-stuff/Infopage';
 import Landing from './components/pre-site-stuff/Landing';
-
 import Home from './components/main-site-stuff/Home'
+import Introverts from './components/main-site-stuff/Introverts'
+import Hangouts from './components/main-site-stuff/Hangouts'
+import Metrics from './components/main-site-stuff/Metrics'
+import Settings from './components/main-site-stuff/Settings'
+
 
 
 class App extends Component {
 
   state = {
-    show: "preshow"
+    show: "loggedIn"
   }
 
   changeShow = (type) => {
@@ -27,11 +29,13 @@ class App extends Component {
       <Router>
         <div className='App'>
           <Navbar />
-          <Home />
-
-          <Route exact path='home'>
-              <Home />
-          </Route>
+          <Switch>
+            <Route exact path='/home' component={Home}/>
+            <Route exact path='/introverts' component={Introverts}/>
+            <Route exact path='/hangouts' component={Hangouts}/>
+            <Route exact path='/metrics' component={Metrics}/>
+            <Route exact path='/settings' component={Settings}/>
+          </Switch>
         </div>
       </Router>
     )

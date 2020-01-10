@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { styles } from '../../Styles'
 
-class Home extends Component {
+class Introverts extends Component {
     render(){
         return (
-            <button style={styles.button}>
-                h o m e
-            </button>
+            <div style={styles.base}>
+                intorgve
+            </div>
         )
     }
 }
 
-export default Radium(Home)
+export default Radium(Introverts)

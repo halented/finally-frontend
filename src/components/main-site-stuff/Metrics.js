@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { styles } from '../../Styles'
 
-class Home extends Component {
+class Metrics extends Component {
     render(){
         return (
             <button style={styles.button}>
-                h o m e
+                MATRACSK
             </button>
         )
     }
 }
 
-export default Radium(Home)
+export default Radium(Metrics)
