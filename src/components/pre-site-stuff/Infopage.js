@@ -2,10 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import icon from '../../images/icon.png';
 import me from '../../images/circleMe.png';
+import Radium from 'radium';
 
-export default function Navbar(props){
+var thisStyle = {
+    base: {
+        justifyContent: 'center'
+    }
+}
+
+function Infopage(props){
     return (
-     <div className='App'>
+     <div className='App' style={thisStyle.base}>
          <div>
             {props.trait === 'about' ?
                 <div>
@@ -29,3 +36,5 @@ export default function Navbar(props){
      </div> 
     )
 }
+
+export default Radium(Infopage)
