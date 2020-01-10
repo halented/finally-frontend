@@ -14,15 +14,6 @@
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
- button {
-  background-color: rgb(235, 214, 214);
-  color: #282c34;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: medium;
-  border-radius: 3px;
-  box-shadow: 5px 5px #1b1e24;
-  margin: 10%;
- }
 
  input {
   box-shadow: 5px 5px #1b1e24;
@@ -108,11 +99,9 @@ b:hover{
  }
  /* ------------------------------------ */
 
- /* NAV MENU STYLING */
- .navlinks {
-  text-decoration: none;
-  color: inherit;
-}
+/* #test:hover {
+  color: lightcoral;
+} */
 
 .navmenu {
  border: 1px solid black;
