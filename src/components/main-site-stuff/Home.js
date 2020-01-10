@@ -24,19 +24,24 @@ const thisStyle = {
 
 class Home extends Component {
     state= {
-        topFriends: ["john", "john2", 'john3']
+        topFriends: ["l o a d i n g"]
     }
 
     componentDidMount(){
-        // fetch to grab top 3 introverts
+        fetch('http://localhost:3000/users/1')
+        .then(res => res.json())
+        .then(json=> {
+            let temp = json.introverts.slice(0,3)
+            this.setState({topFriends: temp})
+        })
     }
 
     render(){
         return (
             <div style={thisStyle.base}>
                 <div style={thisStyle.topFriendsDiv}>{
-                    this.state.topFriends.map(bud=>{
-                        return <p>{bud} </p>
+                    this.state.topFriends.map(int=>{
+                        return <div>{int.name}</div>
                     })
                 }</div>
                 <div style={thisStyle.addFriend}>form to add an introvert</div>
