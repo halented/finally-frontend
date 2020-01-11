@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
+import Form from './Form'
 import { styles } from '../../Styles'
 import bear from '../../images/bear.png'
 import bull from '../../images/bull.png'
@@ -30,17 +31,6 @@ const thisStyle = {
         gridArea: '4 / 1 / 6 / 6',
         display: 'flex',
         justifyContent: 'space-around'
-    },
-    forms: {
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: '70%',
-        alignSelf: 'center',
-        border: '1px solid black',
-        padding: '2%',
-        bMozBoxShadow: '0 0 10px #000000',
-        'WebkitBoxShadow': '0 0 10px #000000',
-        boxShadow: '0 0 10px #000000'
     }
 }
 
@@ -84,17 +74,20 @@ class Home extends Component {
         this.setState({showForm: true, formType: trait})
     }
 
-    conditionalForm = () => {
-        return this.state.formType === 'introvert' ? 
-            <form style={thisStyle.forms}>
-                <label>Name:</label>
-                <input placeholder='name'></input>
-                <label>Recharge Activity:</label>
-                <input placeholder='recharge activity'></input>
-                <input type='submit' style={styles.button}/>
-            </form>
-        :
-            <form style={thisStyle.forms}>add hang form</form>
+    saveIntrovert = (ev) => {
+        ev.preventDefault()
+        let postData = {name: ev.target.name.value, activity: ev.target.activity.value, img_ref: 'default', on_cooldown: false}
+        fetch('http://localhost:3000/introverts', {
+            method: 'POST',
+            headers: {
+                'Content Type': 'application/json',
+                Accept: 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(postData)
+        })
+        .then(res=>res.json())
+        .then(console.log)
     }
 
     render(){
@@ -103,7 +96,7 @@ class Home extends Component {
                 <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
                 <div style={thisStyle.buttonHolder}>
                     {this.state.showForm === true?
-                        this.conditionalForm()
+                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert}/>
                         // render form component based on which element was clicked
                         :
                         <>
