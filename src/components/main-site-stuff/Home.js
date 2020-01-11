@@ -11,7 +11,7 @@ import fallback from '../../images/octi.png'
 
 const thisStyle = {
     base: {
-        height: '100vh',
+        height: '80vh',
         display: 'grid',
         gridTemplateColumns: 'repeat(5, 1fr)',
         gridTemplateRows: 'repeat(5, 1fr)'
@@ -27,14 +27,28 @@ const thisStyle = {
         maxWidth: '30%'
     },
     buttonHolder: {
-        gridArea: '4 / 1 / 6 / 6'
+        gridArea: '4 / 1 / 6 / 6',
+        display: 'flex',
+        justifyContent: 'space-around'
+    },
+    forms: {
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '70%',
+        alignSelf: 'center',
+        border: '1px solid black',
+        padding: '2%',
+        bMozBoxShadow: '0 0 10px #000000',
+        'WebkitBoxShadow': '0 0 10px #000000',
+        boxShadow: '0 0 10px #000000'
     }
 }
 
 class Home extends Component {
     state= {
-        topFriends: ["l o a d i n g"],
-        showForm: 'false'
+        topFriends: ["placeholder1","placeholder2", "placeholder3"],
+        showForm: false,
+        formType: 'none'
     }
 
     componentDidMount(){
@@ -67,7 +81,20 @@ class Home extends Component {
         })
     }
     changeShow = (trait) => {
-        this.setState({showForm: true})
+        this.setState({showForm: true, formType: trait})
+    }
+
+    conditionalForm = () => {
+        return this.state.formType === 'introvert' ? 
+            <form style={thisStyle.forms}>
+                <label>Name:</label>
+                <input placeholder='name'></input>
+                <label>Recharge Activity:</label>
+                <input placeholder='recharge activity'></input>
+                <input type='submit' style={styles.button}/>
+            </form>
+        :
+            <form style={thisStyle.forms}>add hang form</form>
     }
 
     render(){
@@ -76,7 +103,7 @@ class Home extends Component {
                 <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
                 <div style={thisStyle.buttonHolder}>
                     {this.state.showForm === true?
-                        <Form/>
+                        this.conditionalForm()
                         // render form component based on which element was clicked
                         :
                         <>
