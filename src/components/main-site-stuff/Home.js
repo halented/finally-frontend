@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-// import { styles } from '../../Styles'
+import { styles } from '../../Styles'
 import bear from '../../images/bear.png'
 import bull from '../../images/bull.png'
 import bun from '../../images/bun.png'
@@ -23,20 +23,18 @@ const thisStyle = {
         flexDirection: 'row',
         justifyContent: 'space-around'
     },
-    addFriend: {
-        gridArea: '4 / 1 / 6 / 3'
-    },
-    addHang: {
-        gridArea: '4 / 4 / 6 / 6'
-    },
     friendCircle: {
         maxWidth: '30%'
+    },
+    buttonHolder: {
+        gridArea: '4 / 1 / 6 / 6'
     }
 }
 
 class Home extends Component {
     state= {
-        topFriends: ["l o a d i n g"]
+        topFriends: ["l o a d i n g"],
+        showForm: 'false'
     }
 
     componentDidMount(){
@@ -47,6 +45,7 @@ class Home extends Component {
             this.setState({topFriends: temp})
         })
     }
+    // there must be a dryer way to do this
     setPics = () => {
         return this.state.topFriends.map(int=>{
             switch(int.img_ref){
@@ -67,12 +66,29 @@ class Home extends Component {
             }
         })
     }
+    changeShow = (trait) => {
+        this.setState({showForm: true})
+    }
+
     render(){
         return (
             <div style={thisStyle.base}>
                 <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
-                <div style={thisStyle.addFriend}>form to add an introvert</div>
-                <div style={thisStyle.addHang}>form to add a hangout</div>
+                <div style={thisStyle.buttonHolder}>
+                    {this.state.showForm === true?
+                        <Form/>
+                        // render form component based on which element was clicked
+                        :
+                        <>
+                            <button style={styles.button} onClick={()=>this.changeShow('introvert')}>
+                            Add New Introvert!
+                            </button>
+                            <button style={styles.button} onClick={()=>this.changeShow('hangout')}>
+                                Add New Hangout!
+                            </button>
+                        </>
+                    }
+                </div>
             </div>
         )
     }
