@@ -17,7 +17,7 @@ import Settings from './components/main-site-stuff/Settings'
 class App extends Component {
 
   state = {
-    show: "loggedIn"
+    show: "preshow"
   }
 
   changeShow = (type) => {
@@ -50,7 +50,7 @@ class App extends Component {
       switch(this.state.show) {
         case "loggedIn":
           return this.mainApp()
-
+          
         case "preshow":
           return (
             <>

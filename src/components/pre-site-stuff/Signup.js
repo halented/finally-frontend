@@ -51,6 +51,7 @@ class Signup extends Component {
             console.log(json)
             if(!!json.user){
                 localStorage.setItem("token", json.token)
+                localStorage.setItem("userId", json.user.id)
                 this.props.login('loggedIn')
             }
             else {
