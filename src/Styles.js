@@ -6,7 +6,7 @@ export const styles = {
         fontSize: 'medium',
         borderRadius: '3px',
         boxShadow: '5px 5px #1b1e24',
-        margin: '10%'
+        margin: '5%'
     },
     forms: {
         display: 'flex',

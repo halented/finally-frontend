@@ -56,19 +56,19 @@ class Home extends Component {
             return this.state.topFriends.map(int=>{
                 switch(int.img_ref){
                     case 'bear':
-                        return <img src={bear} alt={int.name} style={thisStyle.friendCircle}/>
+                        return <img src={bear} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                     case 'bull':
-                        return <img src={bull} alt={int.name} style={thisStyle.friendCircle}/>
+                        return <img src={bull} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                     case 'bun':
-                        return <img src={bun} alt={int.name} style={thisStyle.friendCircle}/>
+                        return <img src={bun} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                     case 'dog':
-                        return <img src={dog} alt={int.name} style={thisStyle.friendCircle}/>
+                        return <img src={dog} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                     case 'flam':
-                        return <img src={flam} alt={int.name} style={thisStyle.friendCircle}/>
+                        return <img src={flam} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                     case 'koala':
-                        return <img src={koala} alt={int.name} style={thisStyle.friendCircle}/>
+                        return <img src={koala} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                     default:
-                        return <img src={fallback} alt={int.name} style={thisStyle.friendCircle}/>
+                        return <img src={fallback} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                 }
             })
         }
