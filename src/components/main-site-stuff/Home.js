@@ -82,19 +82,19 @@ class Home extends Component {
 
     saveIntrovert = (ev) => {
         ev.preventDefault()
-        let postData = {name: ev.target.name.value, activity: ev.target.activity.value, img_ref: 'default', on_cooldown: false}
+        let postData = JSON.stringify({introvert: {name: ev.target.name.value, activity: ev.target.activity.value, img_ref: 'default', on_cooldown: false}})
+        console.log(postData)
+        console.log( "and specifically the name:", postData.name)
         fetch('http://localhost:3000/introverts', {
-            method: 'POST',
+            method: 'POST', 
             headers: {
-                'Content Type': 'application/json',
+                'Content-Type': 'application/json', 
                 Accept: 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-                // failed to fetch on window, invalid name. likely an error with the authorization and bearer token.
+                Authorization: `Bearer: ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify(postData)
-        })
-        .then(res=>res.json())
-        .then(console.log)
+            body: postData})
+            .then(res=>res.json())
+            .then(json=>console.log(json))
     }
 
     render(){
