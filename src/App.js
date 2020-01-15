@@ -27,7 +27,8 @@ class App extends Component {
       fetch(`http://localhost:3000/users/${parseInt(localStorage.getItem('userId'))}`)
       .then(res => res.json())
       .then(json=> {
-          this.setState({introverts: json.introverts, user: json.user})
+          this.setState({introverts: json.introverts, user: json.user}, console.log("been set! ", this.state.introverts))
+
       })
     }
   }
@@ -38,21 +39,7 @@ class App extends Component {
 
 
   mainApp = () => {
-    return (
-      <Router>
-        <div className='App'>
-          <Navbar />
-          <Switch>
-            <Route exact path='/home' component={Home}/>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/introverts' component={Introverts}/>
-            <Route exact path='/hangouts' component={Hangouts}/>
-            <Route exact path='/metrics' component={Metrics}/>
-            <Route exact path='/settings' component={Settings}/>
-          </Switch>
-        </div>
-      </Router>
-    )
+    return <Home />
   }
 
   conditionalRender = () => {

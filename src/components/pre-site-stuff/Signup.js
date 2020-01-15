@@ -33,7 +33,7 @@ class Signup extends Component {
         isDisabled: true,
         buttonClass: 'disabled'
     }
-
+// the function below should probably be in app
     signUpOrIn = (ev) => {
         ev.preventDefault()
         let postData = {email: this.state.email, username: this.state.username, password: this.state.password}

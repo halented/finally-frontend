@@ -44,12 +44,14 @@ class Navbar extends React.Component{
          <div key='1' style={styles.base}>
             <div style={styles.linkBox}>
                 {this.state.links.map(link=>{
-                    return <NavLink 
-                                exact to={`/${link.toLowerCase()}`} 
-                                className='infoLinks'
-                                activeStyle={{fontWeight: 'bold'}}>
-                                {link}
-                            </NavLink>
+                    return (
+                        <NavLink 
+                            exact to={`/${link.toLowerCase()}`} 
+                            className='infoLinks'
+                            activeStyle={{fontWeight: 'bold'}}>
+                            {link}
+                        </NavLink>
+                    )
                 })}
              </div>
             <NavLink exact to='/home' style={{marginTop: '3%'}}>

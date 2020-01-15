@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { HashRouter as Router, Route, Switch} from 'react-router-dom'
 import Radium from 'radium';
 import Form from './Form'
+import Navbar from '../pre-site-stuff/Navbar'
+import Introverts from './Introverts'
+import Hangouts from './Hangouts'
+import Metrics from './Metrics'
+import Settings from './Settings'
+
 import { styles } from '../../Styles'
 import bear from '../../images/bear.png'
 import bull from '../../images/bull.png'
@@ -101,26 +108,42 @@ class Home extends Component {
 
     render(){
         return (
-            <div style={thisStyle.base}>
-                <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
-                <div style={thisStyle.buttonHolder}>
-                    {this.state.showForm === true?
-                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert}/>
-                        // render form component based on which element was clicked
-                        :
-                        <>
-                            <button style={styles.button} onClick={()=>this.changeShow('introvert')}>
-                            Add New Introvert!
-                            </button>
-                            <button style={styles.button} onClick={()=>this.changeShow('hangout')}>
-                                Add New Hangout!
-                            </button>
-                        </>
-                    }
+            <Router>
+                <div className='App'>
+                    <Navbar />
+                    <div style={thisStyle.base}>
+                        <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
+                        <div style={thisStyle.buttonHolder}>
+                            {this.state.showForm === true?
+                                <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert}/>
+                                // render form component based on which element was clicked
+                                :
+                                <>
+                                    <button style={styles.button} onClick={()=>this.changeShow('introvert')}>
+                                    Add New Introvert!
+                                    </button>
+                                    <button style={styles.button} onClick={()=>this.changeShow('hangout')}>
+                                        Add New Hangout!
+                                    </button>
+                                </>
+                            }
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <Route exact path='/introverts' component={Introverts}/>
+            </Router>
         )
     }
 }
 
 export default Radium(Home)
+
+
+                {/* <Switch>
+                    <Route exact path='/home' component={Home}/>
+                    <Route exact path='/' component={Home}/>
+                    <Route exact path='/introverts' component={Introverts}/>
+                    <Route exact path='/hangouts' component={Hangouts}/>
+                    <Route exact path='/metrics' component={Metrics}/>
+                    <Route exact path='/settings' component={Settings}/>
+                </Switch> */}
