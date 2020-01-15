@@ -70,6 +70,8 @@ class Home extends Component {
                     default:
                         return <img src={fallback} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                 }
+                // return <img src={eval(int.img_ref)} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
+                // stating that fallback is not defined after it is evaluated. maybe async issue?
             })
         }
         else {

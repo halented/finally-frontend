@@ -17,12 +17,25 @@ import Settings from './components/main-site-stuff/Settings'
 class App extends Component {
 
   state = {
-    show: "preshow"
+    show: "preshow",
+    user: 'none',
+    introverts: []
+  }
+
+  componentDidMount(){
+    if(localStorage.getItem('token')){
+      fetch(`http://localhost:3000/users/${parseInt(localStorage.getItem('userId'))}`)
+      .then(res => res.json())
+      .then(json=> {
+          this.setState({introverts: json.introverts, user: json.user})
+      })
+    }
   }
 
   changeShow = (type) => {
     this.setState({show: type})
   }
+
 
   mainApp = () => {
     return (

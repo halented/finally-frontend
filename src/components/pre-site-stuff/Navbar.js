@@ -35,43 +35,26 @@ var styles = {
 }
 
 class Navbar extends React.Component{
+    state = {
+        links: ['Home', 'Introverts', 'Hangouts', 'Metrics', 'Settings']
+    }
 
     render(){
         return (
          <div key='1' style={styles.base}>
             <div style={styles.linkBox}>
-                <NavLink 
-                    exact to='/home' 
-                    className='infoLinks'
-                    activeStyle={{fontWeight: 'bold'}}>
-                    Home
-                </NavLink>
-                <NavLink 
-                    exact to='/introverts' 
-                    className='infoLinks' 
-                    activeStyle={{fontWeight: 'bold'}}>
-                    Introverts
-                </NavLink>
-                <NavLink 
-                    exact to='/hangouts' 
-                    className='infoLinks'
-                    activeStyle={{fontWeight: 'bold'}}>
-                    Hangouts
-                </NavLink>
-                <NavLink 
-                    exact to='/metrics' 
-                    className='infoLinks'
-                    activeStyle={{fontWeight: 'bold'}}>
-                    Metrics
-                </NavLink>
-                <NavLink 
-                    exact to='/settings' 
-                    className='infoLinks'
-                    activeStyle={{fontWeight: 'bold'}}>
-                    Settings
-                </NavLink>
+                {this.state.links.map(link=>{
+                    return <NavLink 
+                                exact to={`/${link.toLowerCase()}`} 
+                                className='infoLinks'
+                                activeStyle={{fontWeight: 'bold'}}>
+                                {link}
+                            </NavLink>
+                })}
              </div>
-            <img style={styles.indicator} src={icon} alt='finally app logo'></img>
+            <NavLink exact to='/home' style={{marginTop: '3%'}}>
+                <img style={styles.indicator} src={icon} alt='finally app logo'></img>
+            </NavLink>
          </div> 
         )
     }
