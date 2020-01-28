@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   changeShow = (type, introvs = []) => {
-    if(type === 'loggedIn'){
+    if(type === 'preshow'){
       this.setState({show: type, introverts: introvs})
     }
     else {

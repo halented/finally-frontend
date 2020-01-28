@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import Radium from 'radium';
-import Form from './Form'
+import Form from './Form';
+import { IntrovertLink } from './IntrovertLink';
 
 import { styles } from '../../Styles'
-import bear from '../../images/bear.png'
-import bull from '../../images/bull.png'
-import bun from '../../images/bun.png'
-import dog from '../../images/dog.png'
-import flam from '../../images/flam.png'
-import koala from '../../images/koala.png'
-import fallback from '../../images/octi.png'
 
 
 const thisStyle = {
@@ -26,9 +20,6 @@ const thisStyle = {
         gridArea: '1 / 1 / 4 / 6',
         flexDirection: 'row',
         justifyContent: 'space-around'
-    },
-    friendCircle: {
-        maxWidth: '30%'
     },
     buttonHolder: {
         gridArea: '4 / 1 / 6 / 6',
@@ -52,30 +43,11 @@ class Home extends Component {
             this.setState({topFriends: temp})
         })
     }
-    // there must be a dryer way to do this
+
     setPics = () => {
         if(this.state.topFriends.length > 0){
             return this.state.topFriends.map(int=>{
-                switch(int.img_ref){
-                    case 'bear':
-                        // eval(int.img_ref)
-                        return  <Link to={`introvert/${int.id}`} key={int.id}><img src={bear} alt={int.name} style={thisStyle.friendCircle} key={int.id}/> </Link>
-                    case 'bull':
-                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={bull} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
-                    case 'bun':
-                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={bun} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
-                    case 'dog':
-                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={dog} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
-                    case 'flam':
-                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={flam} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
-                    case 'koala':
-                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={koala} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
-                    default:
-                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={fallback} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
-                }
-                // return <img src={eval(int.img_ref)} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
-                // stating that fallback is not defined after it is evaluated. maybe async issue?
-                // <NavLink to={`introvert/`}><img src={fallback} alt={int.name} style={thisStyle.friendCircle} key={int.id} /></NavLink>
+                return <IntrovertLink int={int} />
             })
         }
         else {
