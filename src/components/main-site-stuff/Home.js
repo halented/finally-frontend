@@ -47,7 +47,7 @@ class Home extends Component {
     setPics = () => {
         if(this.state.topFriends.length > 0){
             return this.state.topFriends.map(int=>{
-                return <IntrovertLink int={int} />
+                return <IntrovertLink int={int} key={int.id}/>
             })
         }
         else {
@@ -61,8 +61,6 @@ class Home extends Component {
     saveIntrovert = (ev) => {
         ev.preventDefault()
         let postData = JSON.stringify({introvert: {name: ev.target.name.value, activity: ev.target.activity.value, img_ref: 'default', on_cooldown: false}})
-        console.log(postData)
-        console.log( "and specifically the name:", postData.introvert.name)
         fetch('http://localhost:3000/introverts', {
             method: 'POST', 
             headers: {

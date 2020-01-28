@@ -28,7 +28,7 @@ class App extends Component {
       fetch(`http://localhost:3000/users/${parseInt(localStorage.getItem('userId'))}`)
       .then(res => res.json())
       .then(json=> {
-          this.setState({introverts: json.introverts, user: json.user}, console.log("been set! ", this.state.introverts))
+          this.setState({introverts: json.introverts, user: json.user})
 
       })
     }
@@ -51,7 +51,9 @@ class App extends Component {
           <Navbar />
           <Switch>
             {this.state.introverts.map(x=>{
-              return <Route exact path={`/introverts/${x.id}`} component={IntrovertShow} key={x.id}/>
+              return <Route exact path={`/introverts/${x.id}`} render={props => 
+                (<IntrovertShow {...props} int={x}/>)
+              }/>
             })}
             <Route exact path='/home' component={Home}/>
             <Route exact path='/' component={Home}/>

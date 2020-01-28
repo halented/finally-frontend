@@ -48,7 +48,6 @@ class Signup extends Component {
         })
         .then(res=>res.json())
         .then(json=> {
-            console.log(json)
             if(!!json.user){
                 localStorage.setItem("token", json.token)
                 localStorage.setItem("userId", json.user.id)
