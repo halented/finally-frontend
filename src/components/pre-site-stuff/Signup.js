@@ -52,7 +52,7 @@ class Signup extends Component {
             if(!!json.user){
                 localStorage.setItem("token", json.token)
                 localStorage.setItem("userId", json.user.id)
-                this.props.login('loggedIn')
+                this.props.login('loggedIn', json.user.introverts)
             }
             else {
                 json.error ? alert(json.error) : alert("Something went wrong.")

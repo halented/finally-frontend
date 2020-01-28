@@ -48,7 +48,8 @@ class Navbar extends React.Component{
                         <NavLink 
                             exact to={`/${link.toLowerCase()}`} 
                             className='infoLinks'
-                            activeStyle={{fontWeight: 'bold'}}>
+                            activeStyle={{fontWeight: 'bold'}}
+                            key={link}>
                             {link}
                         </NavLink>
                     )

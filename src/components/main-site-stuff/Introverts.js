@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Radium from 'radium';
-import { styles } from '../../Styles'
+// import { styles } from '../../Styles'
 import bear from '../../images/bear.png'
 import bull from '../../images/bull.png'
 import bun from '../../images/bun.png'
@@ -26,9 +27,8 @@ class Introverts extends Component {
         return (
             <div>
                 {this.state.introvs.length>0 ? 
-                this.state.introvs.map(x=>{
-                    console.log(fallback)
-                    return <img src={flam}></img>
+                this.state.introvs.map(int=>{
+                    return <Link to={`introverts/${int.id}`}><img src={fallback} alt={int.name} key={int.id}/></Link>
                 }) 
                 :
                 <div>No Introverts Added Yet!</div>

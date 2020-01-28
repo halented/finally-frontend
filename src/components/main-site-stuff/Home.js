@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Radium from 'radium';
 import Form from './Form'
-import Navbar from '../pre-site-stuff/Navbar'
-import Introverts from './Introverts'
-import Hangouts from './Hangouts'
-import Metrics from './Metrics'
-import Settings from './Settings'
 
 import { styles } from '../../Styles'
 import bear from '../../images/bear.png'
@@ -63,22 +58,24 @@ class Home extends Component {
             return this.state.topFriends.map(int=>{
                 switch(int.img_ref){
                     case 'bear':
-                        return <img src={bear} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
+                        // eval(int.img_ref)
+                        return  <Link to={`introvert/${int.id}`} key={int.id}><img src={bear} alt={int.name} style={thisStyle.friendCircle} key={int.id}/> </Link>
                     case 'bull':
-                        return <img src={bull} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
+                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={bull} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
                     case 'bun':
-                        return <img src={bun} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
+                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={bun} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
                     case 'dog':
-                        return <img src={dog} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
+                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={dog} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
                     case 'flam':
-                        return <img src={flam} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
+                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={flam} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
                     case 'koala':
-                        return <img src={koala} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
+                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={koala} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
                     default:
-                        return <img src={fallback} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
+                        return <Link to={`introverts/${int.id}`} key={int.id}><img src={fallback} alt={int.name} style={thisStyle.friendCircle} key={int.id}/></Link>
                 }
                 // return <img src={eval(int.img_ref)} alt={int.name} style={thisStyle.friendCircle} key={int.id} onClick={()=>window.location=`/introverts/${int.id}`}/>
                 // stating that fallback is not defined after it is evaluated. maybe async issue?
+                // <NavLink to={`introvert/`}><img src={fallback} alt={int.name} style={thisStyle.friendCircle} key={int.id} /></NavLink>
             })
         }
         else {
@@ -93,7 +90,7 @@ class Home extends Component {
         ev.preventDefault()
         let postData = JSON.stringify({introvert: {name: ev.target.name.value, activity: ev.target.activity.value, img_ref: 'default', on_cooldown: false}})
         console.log(postData)
-        console.log( "and specifically the name:", postData.name)
+        console.log( "and specifically the name:", postData.introvert.name)
         fetch('http://localhost:3000/introverts', {
             method: 'POST', 
             headers: {
@@ -108,42 +105,26 @@ class Home extends Component {
 
     render(){
         return (
-            <Router>
-                <div className='App'>
-                    <Navbar />
-                    <div style={thisStyle.base}>
-                        <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
-                        <div style={thisStyle.buttonHolder}>
-                            {this.state.showForm === true?
-                                <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert}/>
-                                // render form component based on which element was clicked
-                                :
-                                <>
-                                    <button style={styles.button} onClick={()=>this.changeShow('introvert')}>
-                                    Add New Introvert!
-                                    </button>
-                                    <button style={styles.button} onClick={()=>this.changeShow('hangout')}>
-                                        Add New Hangout!
-                                    </button>
-                                </>
-                            }
-                        </div>
-                    </div>
+            <div style={thisStyle.base}>
+                <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
+                <div style={thisStyle.buttonHolder}>
+                    {this.state.showForm === true?
+                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert}/>
+                        // render form component based on which element was clicked
+                        :
+                        <>
+                            <button style={styles.button} onClick={()=>this.changeShow('introvert')}>
+                            Add New Introvert!
+                            </button>
+                            <button style={styles.button} onClick={()=>this.changeShow('hangout')}>
+                                Add New Hangout!
+                            </button>
+                        </>
+                    }
                 </div>
-                <Route exact path='/introverts' component={Introverts}/>
-            </Router>
+            </div>
         )
     }
 }
 
 export default Radium(Home)
-
-
-                {/* <Switch>
-                    <Route exact path='/home' component={Home}/>
-                    <Route exact path='/' component={Home}/>
-                    <Route exact path='/introverts' component={Introverts}/>
-                    <Route exact path='/hangouts' component={Hangouts}/>
-                    <Route exact path='/metrics' component={Metrics}/>
-                    <Route exact path='/settings' component={Settings}/>
-                </Switch> */}

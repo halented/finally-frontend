@@ -8,6 +8,7 @@ import Infopage from './components/pre-site-stuff/Infopage';
 import Landing from './components/pre-site-stuff/Landing';
 import Home from './components/main-site-stuff/Home'
 import Introverts from './components/main-site-stuff/Introverts'
+import IntrovertShow from './components/main-site-stuff/IntrovertShow'
 import Hangouts from './components/main-site-stuff/Hangouts'
 import Metrics from './components/main-site-stuff/Metrics'
 import Settings from './components/main-site-stuff/Settings'
@@ -33,15 +34,37 @@ class App extends Component {
     }
   }
 
-  changeShow = (type) => {
-    this.setState({show: type})
+  changeShow = (type, introvs = []) => {
+    if(type === 'loggedIn'){
+      this.setState({show: type, introverts: introvs})
+    }
+    else {
+      this.setState({show: type})
+    }
   }
 
 
   mainApp = () => {
-    return <Home />
+    return (
+      <Router>
+        <div className='App'>
+          <Navbar />
+          <Switch>
+            {this.state.introverts.map(x=>{
+              return <Route exact path={`/introverts/${x.id}`} component={IntrovertShow} key={x.id}/>
+            })}
+            <Route exact path='/home' component={Home}/>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/introverts' component={Introverts}/>
+            <Route exact path='/hangouts' component={Hangouts}/>
+            <Route exact path='/metrics' component={Metrics}/>
+            <Route exact path='/settings' component={Settings}/>
+          </Switch>
+        </div>
+      </Router>
+    )
   }
-
+// make sure home components are rendered in the same router that you have all the routes defined
   conditionalRender = () => {
     if(localStorage.getItem('token')){
       return this.mainApp()
