@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Radium from 'radium';
 import Form from './Form';
 import { IntrovertLink } from './IntrovertLink';

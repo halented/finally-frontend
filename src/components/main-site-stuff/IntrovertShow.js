@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import { styles } from '../../Styles'
+
+import { IntrovertLink } from './IntrovertLink';
 
 class IntrovertShow extends Component {
     render(){
         return (
-            <div >
-                {this.props.int.name}
-            </div>
+            <>
+                <div style={{margin: '2%'}}>
+                    <IntrovertLink int={this.props.int}/>
+                </div>
+                <div style={{fontWeight: 'bold', fontSize: 'xx-large'}}>
+                    {this.props.int.name.toUpperCase()}
+                </div>
+            </>
         )
     }
 }
 
 export default Radium(IntrovertShow)
+
+// REFACTOR THIS PAGE TO ABSTRACT STYLE GUIDES

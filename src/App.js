@@ -51,7 +51,7 @@ class App extends Component {
           <Navbar />
           <Switch>
             {this.state.introverts.map(x=>{
-              return <Route exact path={`/introverts/${x.id}`} render={props => 
+              return <Route key={x.id} exact path={`/introverts/${x.id}`} render={props => 
                 (<IntrovertShow {...props} int={x}/>)
               }/>
             })}
