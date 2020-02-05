@@ -14,23 +14,18 @@ var styles = {
         boxShadow: '0 0 10px #000000',
         flexDirection: 'row',
         display: 'flex',
+        justifyContent: 'space-around'
     },
     linkBox: {
         display: 'flex',
-        flexDirection: 'column',
-        marginLeft: '25%'
+        flexDirection: 'column'
     },
     indicator: {
-        display: 'flex',
-        position: 'fixed',
-        right: '25%',
-        alignSelf: 'center',
-        fontSize: 'larger',
         boxShadow: '0 0 12px 6px lightgrey, 0 0 20px 12px rgb(235, 214, 214), 0 0 28px 18px #0ff',
         backgroundColor: 'rgb(235, 214, 214)',
         borderRadius: '50%',
         color: 'lightblue',
-        maxWidth: '7%'
+        maxWidth: '60%'
     }
 }
 
@@ -55,7 +50,7 @@ class Navbar extends React.Component{
                     )
                 })}
              </div>
-            <NavLink exact to='/home' style={{marginTop: '3%'}}>
+            <NavLink exact to='/home' style={{marginTop: '3%', width: '100px', height: '100px', backgroundImage: 'url("../../images/icon.png")'}} >
                 <img style={styles.indicator} src={icon} alt='finally app logo'></img>
             </NavLink>
          </div> 
@@ -63,5 +58,5 @@ class Navbar extends React.Component{
     }
 
 }
-
+// style={{backgroundImage: "../../images/icon.png"}}
 export default Radium(Navbar)
