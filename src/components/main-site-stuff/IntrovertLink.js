@@ -10,7 +10,7 @@ import fallback from '../../images/octi.png'
 
 const thisStyle = {
     friendCircle: {
-        maxWidth: '30%'
+        maxWidth: '60%'
     }
 }
 

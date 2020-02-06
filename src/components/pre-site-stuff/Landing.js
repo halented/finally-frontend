@@ -1,17 +1,23 @@
 import React from 'react';
+import Radium from 'radium';
 import { NavLink } from 'react-router-dom'
+import { styles } from '../../Styles'
 
+// className="flipCard" 
+//className="flipCardInner" 
+// className='flipBoxFront' 
+// className="flipBoxBack"
 
-export default function Landing (props){
+function Landing (props){
         return (
             <>
                 <div className='App'>
-                    <div className="flipCard">
-                        <div className="flipCardInner">
-                        <div className='flipBoxFront'>
+                    <div style={styles.flipCard} key='flipCard'>
+                        <div style={styles.flipCardInner} key='flipCardInner'>
+                        <div style={styles.flipBoxFront}>
                         <span id='finally'>FINALLY! </span>AN APP FOR EXTROVERTS
                         </div>
-                        <div className="flipBoxBack" onClick={()=>props.changeShow('signup')}>
+                        <div style={styles.flipBoxBack} onClick={()=>props.changeShow('signup')}>
                             CLICK HERE TO GET STARTED
                         </div>
                         </div>
@@ -25,3 +31,5 @@ export default function Landing (props){
             </>
         )
 }
+
+export default Radium(Landing)

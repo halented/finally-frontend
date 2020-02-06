@@ -16,12 +16,12 @@ const thisStyle = {
     topFriendsDiv: {
         display: 'flex',
         margin: 'auto',
-        gridArea: '1 / 1 / 4 / 6',
+        gridArea: '1 / 1 / 3 / 6',
         flexDirection: 'row',
         justifyContent: 'space-around'
     },
     buttonHolder: {
-        gridArea: '4 / 1 / 6 / 6',
+        gridArea: '3 / 1 / 6 / 6',
         display: 'flex',
         justifyContent: 'space-around'
     }
