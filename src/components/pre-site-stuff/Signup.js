@@ -3,21 +3,21 @@ import icon from '../../images/icon.png';
 import { styles } from '../../Styles';
 import Radium from 'radium';
 
-var thisStyle = {
-    base: {
+var toddlers = {
+    signUpBase: {
         justifyContent: 'center'
     },
-    form: {
+    signUpForm: {
         display: 'flex',
         flexDirection: 'column',
         maxWidth: '30vh',
         alignItems: 'center',
         alignSelf: 'center',
     },
-    input: {
+    signUpInput: {
         margin: '7.5%'
     },
-    img: {
+    signUpImg: {
         alignSelf: 'center',
         width: 'calc(70px + 2vmin)',
         marginBottom: '5%'
@@ -81,27 +81,27 @@ class Signup extends Component {
 
     render(){
         return (
-            <div className='App' style={thisStyle.base}>
-                <img src={icon} style={thisStyle.img} alt='Finally! App Icon'></img>
+            <div className='App' style={styles.signUpBase}>
+                <img src={icon} style={styles.signUpImg} alt='Finally! App Icon'></img>
                 ENTER DETAILS BELOW
-                <form onSubmit={(ev)=>{this.signUpOrIn(ev)}} style={thisStyle.form}>
+                <form onSubmit={(ev)=>{this.signUpOrIn(ev)}} style={styles.signUpForm}>
                     <input 
                         placeholder='email' 
                         name='email' 
                         onChange={(ev)=>{this.handleChange(ev)}}
-                        style={thisStyle.input} 
+                        style={styles.signUpInput} 
                     />
                     <input 
                         placeholder='username' 
                         name='username' 
                         onChange={(ev)=>{this.handleChange(ev)}}
-                        style={thisStyle.input} 
+                        style={styles.signUpInput} 
                     />
                     <input 
                         placeholder='password' 
                         name='password' type='password' 
                         onChange={(ev)=>{this.handleChange(ev)}}
-                        style={thisStyle.input} 
+                        style={styles.signUpInput} 
                     />
                     { this.state.isDisabled ?
                         <button type='submit' disabled={this.state.isDisabled} style={styles.disabled}>SUBMIT</button>
