@@ -12,7 +12,8 @@ export const styles = {
         'WebkitBoxShadow': '0 0 10px #000000',
         boxShadow: '0 0 10px #000000'
     },
-    // LANDING PAGE STYLING 
+
+    //  LANDING PAGE STYLING 
     flipCard: {
         alignSelf: 'center',
         margin: '40vh',
@@ -53,7 +54,8 @@ export const styles = {
     infoLinks: {
         fontSize: 'smaller',
         ':hover': {
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            cursor: 'pointer'
         }
       },
     infoPage: {
@@ -67,15 +69,41 @@ export const styles = {
         margin: '15vh',
         width: '80vw'
     },
-    //   END LANDING PAGE STYLING 
+    //  END LANDING PAGE STYLING 
+
+    //  NAVBAR STYLING
+    navBox: {
+        border: '1px solid black',
+        padding: '5px',
+        color: 'lightblue',
+        MozBoxShadow: '0 0 10px #000000',
+        'WebkitBoxShadow': '0 0 10px #000000',
+        boxShadow: '0 0 10px #000000',
+        flexDirection: 'row',
+        display: 'flex',
+        justifyContent: 'space-around'
+    },
+    linkBox: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    indicator: {
+        boxShadow: '0 0 12px 6px lightgrey, 0 0 20px 12px rgb(235, 214, 214), 0 0 28px 18px #0ff',
+        backgroundColor: 'rgb(235, 214, 214)',
+        borderRadius: '50%',
+        color: 'lightblue',
+        maxWidth: '60%'
+    },
+    homeLink: {
+        marginTop: '3%', 
+        width: '100px', 
+        height: '100px', 
+        backgroundImage: 'url("../../images/icon.png")'
+    },
+    // END NAVBAR STYLING
+
     disabled: {
         opacity: '.6'
-    },
-    hoverable: {
-        ':hover': {
-            fontWeight: 'bold',
-            cursor: 'pointer'
-        }
     }
 
 }

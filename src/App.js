@@ -66,7 +66,8 @@ class App extends Component {
       </Router>
     )
   }
-// make sure home components are rendered in the same router that you have all the routes defined
+
+
   conditionalRender = () => {
     if(localStorage.getItem('token')){
       return this.mainApp()

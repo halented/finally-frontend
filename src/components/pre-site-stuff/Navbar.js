@@ -2,41 +2,16 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Radium from 'radium';
 import icon from '../../images/icon.png'
+import { styles } from '../../Styles'
 
-
-var styles = {
-    base: {
-        border: '1px solid black',
-        padding: '5px',
-        color: 'lightblue',
-        MozBoxShadow: '0 0 10px #000000',
-        'WebkitBoxShadow': '0 0 10px #000000',
-        boxShadow: '0 0 10px #000000',
-        flexDirection: 'row',
-        display: 'flex',
-        justifyContent: 'space-around'
-    },
-    linkBox: {
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    indicator: {
-        boxShadow: '0 0 12px 6px lightgrey, 0 0 20px 12px rgb(235, 214, 214), 0 0 28px 18px #0ff',
-        backgroundColor: 'rgb(235, 214, 214)',
-        borderRadius: '50%',
-        color: 'lightblue',
-        maxWidth: '60%'
-    }
-}
-
-class Navbar extends React.Component{
+class Navbar extends React.Component {
     state = {
         links: ['Home', 'Introverts', 'Hangouts', 'Metrics', 'Settings']
     }
 
     render(){
         return (
-         <div key='1' style={styles.base}>
+         <div key='1' style={styles.navBox}>
             <div style={styles.linkBox}>
                 {this.state.links.map(link=>{
                     return (
@@ -50,7 +25,7 @@ class Navbar extends React.Component{
                     )
                 })}
              </div>
-            <NavLink exact to='/home' style={{marginTop: '3%', width: '100px', height: '100px', backgroundImage: 'url("../../images/icon.png")'}} >
+            <NavLink exact to='/home' style={styles.homeLink} >
                 <img style={styles.indicator} src={icon} alt='finally app logo'></img>
             </NavLink>
          </div> 
@@ -58,5 +33,5 @@ class Navbar extends React.Component{
     }
 
 }
-// style={{backgroundImage: "../../images/icon.png"}}
+
 export default Radium(Navbar)
