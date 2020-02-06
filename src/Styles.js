@@ -120,6 +120,27 @@ export const styles = {
     },
     // END NAVBAR STYLING
 
+    // HOME PAGE STYLING
+    homeBase: {
+        height: '80vh',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, 1fr)',
+        gridTemplateRows: 'repeat(5, 1fr)'
+    },
+    topFriendsDiv: {
+        display: 'flex',
+        margin: 'auto',
+        gridArea: '1 / 1 / 3 / 6',
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    buttonHolder: {
+        gridArea: '3 / 1 / 6 / 6',
+        display: 'flex',
+        justifyContent: 'space-around'
+    },
+    // END HOME PAGE STYLING
+
     disabled: {
         opacity: '.6'
     }

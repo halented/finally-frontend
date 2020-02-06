@@ -3,33 +3,12 @@ import Radium from 'radium';
 import Form from './Form';
 import { IntrovertLink } from './IntrovertLink';
 
-// import { styles } from '../../Styles'
-
-
-const thisStyle = {
-    base: {
-        height: '80vh',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
-        gridTemplateRows: 'repeat(5, 1fr)'
-    },
-    topFriendsDiv: {
-        display: 'flex',
-        margin: 'auto',
-        gridArea: '1 / 1 / 3 / 6',
-        flexDirection: 'row',
-        justifyContent: 'space-around'
-    },
-    buttonHolder: {
-        gridArea: '3 / 1 / 6 / 6',
-        display: 'flex',
-        justifyContent: 'space-around'
-    }
-}
+import { styles } from '../../Styles'
 
 class Home extends Component {
     state= {
         topFriends: [],
+        allIntroverts: [],
         showForm: false,
         formType: 'none'
     }
@@ -39,7 +18,7 @@ class Home extends Component {
         .then(res => res.json())
         .then(json=> {
             let temp = json.introverts.slice(0,3)
-            this.setState({topFriends: temp})
+            this.setState({topFriends: temp, allIntroverts: json.introverts})
         })
     }
 
@@ -73,13 +52,19 @@ class Home extends Component {
             .then(json=>console.log(json))
     }
 
+    saveHangout = (ev) => {
+        ev.preventDefault()
+        console.log(ev.target)
+        console.log("you're sure saving that hangout")
+    }
+
     render(){
         return (
-            <div style={thisStyle.base}>
-                <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
-                <div style={thisStyle.buttonHolder}>
+            <div style={styles.homeBase}>
+                <div style={styles.topFriendsDiv}>{this.setPics()}</div>
+                <div style={styles.buttonHolder}>
                     {this.state.showForm === true?
-                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert} changeShow={this.changeShow}/>
+                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert} changeShow={this.changeShow} introverts={this.state.allIntroverts}/>
                         // render form component based on which element was clicked
                         :
                         <>

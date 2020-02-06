@@ -3,26 +3,6 @@ import icon from '../../images/icon.png';
 import { styles } from '../../Styles';
 import Radium from 'radium';
 
-var toddlers = {
-    signUpBase: {
-        justifyContent: 'center'
-    },
-    signUpForm: {
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: '30vh',
-        alignItems: 'center',
-        alignSelf: 'center',
-    },
-    signUpInput: {
-        margin: '7.5%'
-    },
-    signUpImg: {
-        alignSelf: 'center',
-        width: 'calc(70px + 2vmin)',
-        marginBottom: '5%'
-    }
-}
 
 class Signup extends Component {
 

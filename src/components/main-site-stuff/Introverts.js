@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { IntrovertLink } from './IntrovertLink';
-import Radium from 'radium';
 
 
 class Introverts extends Component {
@@ -31,4 +30,4 @@ class Introverts extends Component {
     }
 }
 
-export default Radium(Introverts)
+export default Introverts
