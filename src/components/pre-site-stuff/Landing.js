@@ -3,11 +3,6 @@ import Radium from 'radium';
 import { NavLink } from 'react-router-dom'
 import { styles } from '../../Styles'
 
-// className="flipCard" 
-//className="flipCardInner" 
-// className='flipBoxFront' 
-// className="flipBoxBack"
-
 function Landing (props){
         return (
             <>

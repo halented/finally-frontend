@@ -3,7 +3,7 @@ import Radium from 'radium';
 import Form from './Form';
 import { IntrovertLink } from './IntrovertLink';
 
-import { styles } from '../../Styles'
+// import { styles } from '../../Styles'
 
 
 const thisStyle = {
@@ -54,7 +54,8 @@ class Home extends Component {
         }
     }
     changeShow = (trait) => {
-        this.setState({showForm: true, formType: trait})
+        let temp = !this.state.showForm
+        this.setState({showForm: temp, formType: trait})
     }
 
     saveIntrovert = (ev) => {
@@ -78,14 +79,14 @@ class Home extends Component {
                 <div style={thisStyle.topFriendsDiv}>{this.setPics()}</div>
                 <div style={thisStyle.buttonHolder}>
                     {this.state.showForm === true?
-                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert}/>
+                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert} changeShow={this.changeShow}/>
                         // render form component based on which element was clicked
                         :
                         <>
-                            <button style={styles.button} onClick={()=>this.changeShow('introvert')}>
+                            <button onClick={()=>this.changeShow('introvert')}>
                             Add New Introvert!
                             </button>
-                            <button style={styles.button} onClick={()=>this.changeShow('hangout')}>
+                            <button onClick={()=>this.changeShow('hangout')}>
                                 Add New Hangout!
                             </button>
                         </>

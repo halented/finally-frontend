@@ -30,8 +30,7 @@ class Signup extends Component {
         username: '',
         email: '',
         password: '',
-        isDisabled: true,
-        buttonClass: 'disabled'
+        isDisabled: true
     }
 // the function below should probably be in app
     signUpOrIn = (ev) => {
@@ -72,15 +71,14 @@ class Signup extends Component {
     validator = () => {
         // ensures that all fields have content
         if(this.state.password && this.state.email && this.state.username){
-            this.setState({isDisabled: false, buttonClass: ''})
+            this.setState({isDisabled: false})
 
         }
         else {
-            this.setState({isDisabled: true, buttonClass: 'disabled'})
+            this.setState({isDisabled: true})
         }
     }
-    // refactor function to build button dynamically in a clickable or unclickable way dependent upon the state
-    // in the below, change form to flex box and flex direction column see if we can get rid of those messy brs
+
     render(){
         return (
             <div className='App' style={thisStyle.base}>
@@ -105,7 +103,12 @@ class Signup extends Component {
                         onChange={(ev)=>{this.handleChange(ev)}}
                         style={thisStyle.input} 
                     />
-                    <button type='submit' disabled={this.state.isDisabled} className={this.state.buttonClass} style={styles.button}>SUBMIT</button>
+                    { this.state.isDisabled ?
+                        <button type='submit' disabled={this.state.isDisabled} style={styles.disabled}>SUBMIT</button>
+                    :
+                        <button type='submit' disabled={this.state.isDisabled}>SUBMIT</button>
+                    }
+                    
                 </form>
             </div>
         )

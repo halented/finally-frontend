@@ -12,10 +12,6 @@
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
-/* align-items: center;
-  justify-content: center; */
-
-
  input {
   box-shadow: 5px 5px #1b1e24;
  }
@@ -24,31 +20,37 @@
    text-decoration: none;
    color: inherit;
  }
+ 
+ b {
+  font-weight: normal;
+  }
+  b:hover{
+    cursor: pointer;
+  }
 
+ button {
+  background-color: rgb(235, 214, 214);
+  color: '#282c34';
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: medium;
+  border-radius: 3px;
+  box-shadow: 5px 5px #1b1e24;
+  margin: 5%;
+  height: 15%;
+  align-self: center;
+}
+
+ /* the following two selectors are a workaround as NavLinks/Links wouldn't allow Radium hover */
 .infoLinks {
   font-size: smaller;
 }
 .infoLinks:hover {
   font-weight: bold;
 }
-/* above is a workaround as NavLinks/Links wouldn't allow Radium hover */
 
-b {
-  font-weight: normal;
-}
-b:hover{
-  cursor: pointer;
-}
 
-.infoIcon {
+
+
+/* .infoIcon {
   max-width: 20%;
-}
-
- /* ------------------------------------ */
-
- /* SIGNIN PAGE STYLING */
-
- .disabled {
-   opacity: .6;
- }
- /* ------------------------------------ */
+} */

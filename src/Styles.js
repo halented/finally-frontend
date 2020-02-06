@@ -1,15 +1,4 @@
 export const styles = {
-    button: {
-        backgroundColor: 'rgb(235, 214, 214)',
-        color: '#282c34',
-        fontFamily: "'Open Sans Condensed', sans-serif",
-        fontSize: 'medium',
-        borderRadius: '3px',
-        boxShadow: '5px 5px #1b1e24',
-        margin: '5%',
-        height: '15%',
-        alignSelf: 'center'
-    },
     forms: {
         display: 'flex',
         flexDirection: 'column',
@@ -66,6 +55,27 @@ export const styles = {
         ':hover': {
             fontWeight: 'bold'
         }
-      }
+      },
+    infoPage: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    infoIcon: {
+        maxWidth: '20%'
+    },
+    block: {
+        margin: '15vh',
+        width: '80vw'
+    },
     //   END LANDING PAGE STYLING 
+    disabled: {
+        opacity: '.6'
+    },
+    hoverable: {
+        ':hover': {
+            fontWeight: 'bold',
+            cursor: 'pointer'
+        }
+    }
+
 }

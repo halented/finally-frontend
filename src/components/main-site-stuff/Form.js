@@ -12,7 +12,8 @@ class Form extends Component {
                     <input placeholder='name' name='name'></input>
                     <label>Recharge Activity:</label>
                     <input placeholder='recharge activity' name='activity'></input>
-                    <input type='submit' style={styles.button}/>
+                    <button type='submit'>Submit</button>
+                    <span onClick={ () => {this.props.changeShow("")}} style={styles.hoverable}>Go Back</span>
                 </form>
             :
                 <form style={styles.forms} onSubmit={(ev)=>{this.saveIntrovert(ev)}}>
@@ -20,7 +21,8 @@ class Form extends Component {
                     dropdown menu
                     <label>Purpose:</label>
                     nother dropdown
-                    <input type='submit' style={styles.button}/>
+                    <button type='submit'>Submit</button>
+                    <span onClick={ () => {this.props.changeShow("")}} style={styles.hoverable}>Go Back</span>
                 </form>
             }
             </>
