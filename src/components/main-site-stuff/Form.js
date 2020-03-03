@@ -29,7 +29,7 @@ class Form extends Component {
                     <label>Introvert:</label>
                     <select value={this.state.value} onChange={this.handleChange}>
                         {this.props.introverts.map(int=>{
-                        return <option value={int.name}>{int.name}</option>
+                        return <option value={int.name} key={int.id}>{int.name}</option>
                         })}
                     </select>
                     <label>Purpose:</label>

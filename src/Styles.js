@@ -140,7 +140,9 @@ export const styles = {
         justifyContent: 'space-around'
     },
     // END HOME PAGE STYLING
-
+    friendCircle: {
+        maxWidth: '65%'
+    },
     disabled: {
         opacity: '.6'
     }
