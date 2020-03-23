@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch} from 'react-router-dom'
 //  NavLink Redirect 
 import './App.css';
+import { services } from './apiServices'
 import Signup from './components/pre-site-stuff/Signup';
 import Navbar from './components/pre-site-stuff/Navbar';
 import Infopage from './components/pre-site-stuff/Infopage';
@@ -25,11 +26,9 @@ class App extends Component {
 
   componentDidMount(){
     if(localStorage.getItem('token')){
-      fetch(`http://localhost:3000/users/${parseInt(localStorage.getItem('userId'))}`)
-      .then(res => res.json())
+      services.fetchData()
       .then(json=> {
           this.setState({introverts: json.introverts, user: json.user})
-
       })
     }
   }

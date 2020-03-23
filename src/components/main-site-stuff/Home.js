@@ -4,6 +4,7 @@ import Form from './Form';
 import { IntrovertLink } from './IntrovertLink';
 
 import { styles } from '../../Styles'
+import { services } from '../../apiServices'
 
 class Home extends Component {
     state= {
@@ -15,8 +16,7 @@ class Home extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/users/${parseInt(localStorage.getItem('userId'))}`)
-        .then(res => res.json())
+        services.fetchData()
         .then(json=> {
             let temp = json.introverts.slice(0,3)
             this.setState({topFriends: temp, allIntroverts: json.introverts, allPurposes: json.purposes})
@@ -41,6 +41,7 @@ class Home extends Component {
     saveIntrovert = (ev) => {
         ev.preventDefault()
         let postData = JSON.stringify({introvert: {name: ev.target.name.value, activity: ev.target.activity.value, img_ref: 'default', on_cooldown: false}})
+        services.postIntrovert(postData)
         fetch('http://localhost:3000/introverts', {
             method: 'POST', 
             headers: {
@@ -56,7 +57,9 @@ class Home extends Component {
     saveHangout = (ev) => {
         ev.preventDefault()
         console.log(ev.target)
-        console.log("you're sure saving that hangout")
+        debugger;
+        // send thru the introvert and purpose name, find the friendship/purpose ID's in the backend, save the hangout
+
     }
 
     render(){
@@ -65,7 +68,14 @@ class Home extends Component {
                 <div style={styles.topFriendsDiv}>{this.setPics()}</div>
                 <div style={styles.buttonHolder}>
                     {this.state.showForm === true?
-                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert} changeShow={this.changeShow} introverts={this.state.allIntroverts} purposes={this.state.allPurposes}/>
+                        <Form 
+                            trait={this.state.formType} 
+                            saveIntrovert={this.saveIntrovert} 
+                            changeShow={this.changeShow} 
+                            introverts={this.state.allIntroverts} 
+                            purposes={this.state.allPurposes} 
+                            saveHangout={this.saveHangout}
+                        />
                         // render form component based on which element was clicked
                         :
                         <>
