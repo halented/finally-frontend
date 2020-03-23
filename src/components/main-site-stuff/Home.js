@@ -9,6 +9,7 @@ class Home extends Component {
     state= {
         topFriends: [],
         allIntroverts: [],
+        allPurposes: ["yep", "temporary"],
         showForm: false,
         formType: 'none'
     }
@@ -49,7 +50,7 @@ class Home extends Component {
             },
             body: postData})
             .then(res=>res.json())
-            .then(json=>console.log(json))
+            .then(json=>console.log("gotta do some front end feedback here to prove you saved it"))
     }
 
     saveHangout = (ev) => {
@@ -64,7 +65,7 @@ class Home extends Component {
                 <div style={styles.topFriendsDiv}>{this.setPics()}</div>
                 <div style={styles.buttonHolder}>
                     {this.state.showForm === true?
-                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert} changeShow={this.changeShow} introverts={this.state.allIntroverts}/>
+                        <Form trait={this.state.formType} saveIntrovert={this.saveIntrovert} changeShow={this.changeShow} introverts={this.state.allIntroverts} purposes={this.state.allPurposes}/>
                         // render form component based on which element was clicked
                         :
                         <>
