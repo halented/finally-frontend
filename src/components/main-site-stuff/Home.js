@@ -19,7 +19,7 @@ class Home extends Component {
         .then(res => res.json())
         .then(json=> {
             let temp = json.introverts.slice(0,3)
-            this.setState({topFriends: temp, allIntroverts: json.introverts})
+            this.setState({topFriends: temp, allIntroverts: json.introverts, allPurposes: json.purposes})
         })
     }
 

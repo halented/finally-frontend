@@ -38,7 +38,7 @@ class Form extends Component {
                     <label>Purpose:</label>
                     <select value={this.state.purposeValue} onChange={this.handleChange}>
                         {this.props.purposes.map(purpose=>{
-                        return <option value={purpose} key={purpose}>{purpose}</option>
+                        return <option value={purpose.title} key={purpose.title}>{purpose.title}</option>
                         })}
                     </select>
                     <button type='submit'>Submit</button>
