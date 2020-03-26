@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import icon from '../../images/icon.png';
 import { styles } from '../../Styles';
 import Radium from 'radium';
+import { services } from '../../apiServices'
 
 
 class Signup extends Component {
@@ -17,15 +18,16 @@ class Signup extends Component {
         ev.preventDefault()
         let postData = {email: this.state.email, username: this.state.username, password: this.state.password}
 
-        fetch("http://localhost:3000/auth", {
-            method: 'POST',
-            headers: {
-                Application: 'application/json',
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify(postData)
-        })
-        .then(res=>res.json())
+        // fetch("http://localhost:3000/auth", {
+        //     method: 'POST',
+        //     headers: {
+        //         Application: 'application/json',
+        //         "Content-Type": 'application/json'
+        //     },
+        //     body: JSON.stringify(postData)
+        // })
+        // .then(res=>res.json())
+        services.signIn(postData)
         .then(json=> {
             if(!!json.user){
                 localStorage.setItem("token", json.token)

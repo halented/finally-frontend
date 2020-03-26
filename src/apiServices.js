@@ -7,6 +7,17 @@ const headers = () => {
     })
   }
 
+const signIn = (postData) => {
+    return fetch(`${URL_ROOT}/auth`, {
+            method: 'POST',
+            headers: headers(),
+            body: JSON.stringify(postData)
+        })
+        .then(res=>{
+            return res.json()
+        })
+}
+
 const fetchData = () => {
     return fetch(`${URL_ROOT}/users/${parseInt(localStorage.getItem('userId'))}`)
     .then(res => res.json(), {
@@ -19,7 +30,9 @@ const postIntrovert = (postData) => {
         method: 'POST', 
         headers: headers(),
         body: postData})
-        .then(res=>res.json())
+        .then(res=>{
+            return res.json()
+        })
 }
 
 const postHangout = (postData) => {
@@ -35,5 +48,6 @@ const postHangout = (postData) => {
 export const services = { 
     fetchData,
     postIntrovert,
-    postHangout
+    postHangout,
+    signIn
 }

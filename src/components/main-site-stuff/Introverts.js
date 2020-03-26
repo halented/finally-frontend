@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { IntrovertLink } from './IntrovertLink';
+import { services } from '../../apiServices'
 
 
 class Introverts extends Component {
@@ -8,8 +9,7 @@ class Introverts extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/users/${parseInt(localStorage.getItem('userId'))}`)
-        .then(res => res.json())
+        services.fetchData()
         .then(json=> {
             this.setState({introvs: json.introverts})
         })
