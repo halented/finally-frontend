@@ -40,26 +40,27 @@ class Home extends Component {
 
     saveIntrovert = (ev) => {
         ev.preventDefault()
-        let postData = JSON.stringify({introvert: {name: ev.target.name.value, activity: ev.target.activity.value, img_ref: 'default', on_cooldown: false}})
+        let postData = JSON.stringify({
+            introvert: {
+                name: ev.target.name.value, 
+                activity: ev.target.activity.value, 
+                img_ref: 'default', 
+                on_cooldown: false
+            }
+        })
         services.postIntrovert(postData)
-        fetch('http://localhost:3000/introverts', {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json', 
-                Accept: 'application/json',
-                Authorization: `Bearer: ${localStorage.getItem('token')}`
-            },
-            body: postData})
-            .then(res=>res.json())
-            .then(json=>console.log("gotta do some front end feedback here to prove you saved it"))
+        .then(json=>console.log("gotta do some front end feedback here to prove you saved it"))
     }
 
     saveHangout = (ev) => {
         ev.preventDefault()
         console.log(ev.target)
-        debugger;
-        // send thru the introvert and purpose name, find the friendship/purpose ID's in the backend, save the hangout
-
+        let postData = JSON.stringify({
+            introvert: ev.target.introvert.value,
+            purpose: ev.target.purpose.value
+        })
+        services.postHangout(postData)
+        .then(json=> console.log(json))
     }
 
     render(){
