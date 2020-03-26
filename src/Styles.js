@@ -145,6 +145,10 @@ export const styles = {
     },
     disabled: {
         opacity: '.6'
+    },
+    // SETTINIGS STYLING
+    settings: {
+        display: 'flex',
+        flexDirection: 'column'
     }
-
 }

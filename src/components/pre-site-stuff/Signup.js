@@ -17,16 +17,7 @@ class Signup extends Component {
     signUpOrIn = (ev) => {
         ev.preventDefault()
         let postData = {email: this.state.email, username: this.state.username, password: this.state.password}
-
-        // fetch("http://localhost:3000/auth", {
-        //     method: 'POST',
-        //     headers: {
-        //         Application: 'application/json',
-        //         "Content-Type": 'application/json'
-        //     },
-        //     body: JSON.stringify(postData)
-        // })
-        // .then(res=>res.json())
+        
         services.signIn(postData)
         .then(json=> {
             if(!!json.user){
