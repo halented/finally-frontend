@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { styles } from '../../Styles'
 
+const formBoxStyle = Object.assign(styles.forms, styles.shadowed)
+
 class Form extends Component {
     state= {
         introvertValue: '',
@@ -19,7 +21,7 @@ class Form extends Component {
         return (
             <>
             {this.props.trait === 'introvert' ? 
-                <form style={styles.forms} onSubmit={(ev)=>{this.props.saveIntrovert(ev)}}>
+                <form style={formBoxStyle} onSubmit={(ev)=>{this.props.saveIntrovert(ev)}}>
                     <label>Name:</label>
                     <input placeholder='name' name='name'></input>
                     <label>Recharge Activity:</label>
@@ -28,7 +30,7 @@ class Form extends Component {
                     <span onClick={ () => {this.props.changeShow("")}} style={styles.infoLinks}>Go Back</span>
                 </form>
             :
-                <form style={styles.forms} onSubmit={(ev)=>{this.props.saveHangout(ev)}}>
+                <form style={formBoxStyle} onSubmit={(ev)=>{this.props.saveHangout(ev)}}>
                     <label>Introvert:</label>
                     <select id="introvert" value={this.state.introvertValue} onChange={(ev)=>this.handleChange(ev, "introvertValue")}>
                         {this.props.introverts.map(int=>{

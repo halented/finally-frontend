@@ -23,6 +23,8 @@ const months = [
     "November",
     "December"]
 
+const hangBoxStyle = Object.assign(styles.hangBox, styles.shadowed)
+
 function Hangouts(){
     const [ hangouts, alterHangouts ] = useState([])
     useEffect(setHangouts, [])
@@ -45,7 +47,7 @@ function Hangouts(){
             
             // debugger;
         return (
-            <div style={styles.hangBox}>
+            <div style={hangBoxStyle}>
                 On {date[1]} {date[2]}, {date[0]}, you and {hang[key][0]} participated in {key}.
             </div>
         )
