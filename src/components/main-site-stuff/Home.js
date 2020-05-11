@@ -26,7 +26,12 @@ class Home extends Component {
     setPics = () => {
         if(this.state.topFriends.length > 0){
             return this.state.topFriends.map(int=>{
-                return <IntrovertLink int={int} key={int.id}/>
+                return (
+                    <div style={styles.friendBox}>
+                        <span style={styles.friendName}>{int.name}</span>
+                        <IntrovertLink int={int} key={int.id}/>
+                    </div>
+                )
             })
         }
         else {

@@ -135,8 +135,14 @@ export const styles = {
         display: 'flex',
         margin: 'auto',
         gridArea: '1 / 1 / 3 / 6',
-        flexDirection: 'row',
         justifyContent: 'space-around'
+    },
+    friendName: {
+        fontSize: 'small'
+    },
+    friendBox: {
+        display: 'flex',
+        flexDirection: 'column'
     },
     buttonHolder: {
         gridArea: '3 / 1 / 6 / 6',
