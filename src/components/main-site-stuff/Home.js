@@ -65,7 +65,12 @@ class Home extends Component {
             purpose: ev.target.purpose.value
         })
         services.postHangout(postData)
-        .then(json=> console.log(json))
+        .then(json=> {
+            if(json.error){
+                alert(json.error)
+            }
+            else alert("Hangout saved!")
+        })
     }
 
     render(){

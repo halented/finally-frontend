@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { IntrovertLink } from './IntrovertLink';
 import { services } from '../../apiServices'
+import { styles } from '../../Styles';
 
 
 class Introverts extends Component {
@@ -13,14 +14,19 @@ class Introverts extends Component {
         .then(json=> {
             this.setState({introvs: json.introverts})
         })
-    }
+    } 
     render(){
         return (
             <div style={{padding: '5%'}}>
                 {this.state.introvs.length>0 ? 
                 this.state.introvs.map(int=>{
-                    return <IntrovertLink int={int} style={{maxHeight: '10%'}} key={int.id}/>
-                    // add a hover style that displays the introvert's name
+                    return (
+                        <div style={styles.friendBox}>
+                            <span>{int.name}</span>
+                            <IntrovertLink int={int} style={{maxHeight: '10%'}} key={int.id}/>
+                        </div>
+                    )
+                    // eventually add a hover style that displays the introvert's name
                 }) 
                 :
                 <div>No Introverts Added Yet!</div>

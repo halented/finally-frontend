@@ -142,7 +142,7 @@ export const styles = {
     },
     friendBox: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
     },
     buttonHolder: {
         gridArea: '3 / 1 / 6 / 6',
@@ -156,6 +156,7 @@ export const styles = {
     disabled: {
         opacity: '.6'
     },
+
     // SETTINIGS STYLING
     settings: {
         display: 'flex',
