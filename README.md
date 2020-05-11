@@ -7,7 +7,7 @@ Finally, there is an app for you! With **FINALLY!** AN APP FOR EXTROVERTS, you c
 * Log your introvert friends and their custom quiet time needs!
 * View cute animal versions of your introvert friends on your homepage, like this!
 
-![Image of Homepage](https://github.com/halented/finally-frontend/homepage.png)
+![Image of Homepage](https://raw.githubusercontent.com/halented/finally-frontend/master/homepage.png)
 * Get automatically notified when one of you introvert friends is ready to hang out!
 * Probably more!
 
