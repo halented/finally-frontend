@@ -5,6 +5,9 @@ Are you an extrovert? Do you find yourself confused and inept when it comes to r
 Finally, there is an app for you! With **FINALLY!** AN APP FOR EXTROVERTS, you can:
 
 * Log your introvert friends and their custom quiet time needs!
+* View cute animal versions of your introvert friends on your homepage, like this!
+
+![Image of Homepage](https://github.com/halented/finally-frontend/homepage.png)
 * Get automatically notified when one of you introvert friends is ready to hang out!
 * Probably more!
 

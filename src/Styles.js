@@ -1,3 +1,7 @@
+export const changeApp = () => {
+    
+}
+
 export const styles = {
     forms: {
         display: 'flex',

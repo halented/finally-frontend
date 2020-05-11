@@ -3,6 +3,7 @@
  /* GENERALIZED, APP-WIDE STYLING */
 .App {
   background-color: #282c34;
+  /* background-color: #8591ab; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -50,7 +51,8 @@
 
 
 
-
+/* mostly dead code */
+/* which is slightly alive code */
 /* .infoIcon {
   max-width: 20%;
 } */
