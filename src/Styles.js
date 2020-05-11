@@ -157,6 +157,20 @@ export const styles = {
         opacity: '.6'
     },
 
+    // HANGOUTS PAGE STYLING
+    hangBox: {
+        border: '1px solid red',
+        margin: '1em',
+        width: '40%',
+        padding: '2%'
+    },
+    outerHangBox: {
+        display: 'flex',
+        flexDirection:'column',
+        alignItems: 'center'
+    },
+    // END HANGOUTS PAGE STYLING
+
     // SETTINIGS STYLING
     settings: {
         display: 'flex',

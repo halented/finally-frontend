@@ -59,7 +59,6 @@ class Home extends Component {
 
     saveHangout = (ev) => {
         ev.preventDefault()
-        console.log(ev.target)
         let postData = JSON.stringify({
             introvert: ev.target.introvert.value,
             purpose: ev.target.purpose.value
