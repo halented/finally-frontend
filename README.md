@@ -11,6 +11,8 @@ Finally, there is an app for you! With **FINALLY!** AN APP FOR EXTROVERTS, you c
 * Get automatically notified when one of you introvert friends is ready to hang out!
 * Probably more!
 
+Checkout the backend here: https://github.com/halented/finally-backend
+
 <small>Officaily licensed by [MIT](https://choosealicense.com/licenses/mit/)</small>
 <small><details><summary>Copyright (c) 2019 Hal Dunn </summary></small>
 
