@@ -12,7 +12,7 @@ class Navbar extends React.Component {
     render(){
         return (
          <div key='1' style={styles.navBox}>
-            <div style={styles.centeredFlexbox}>
+            <div style={styles.columnFlexbox}>
                 {this.state.links.map(link=>{
                     return (
                         <NavLink 

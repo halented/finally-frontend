@@ -141,10 +141,6 @@ export const styles = {
     friendName: {
         fontSize: 'small'
     },
-    friendBox: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
     buttonHolder: {
         gridArea: '3 / 1 / 6 / 6',
         display: 'flex',
@@ -171,16 +167,4 @@ export const styles = {
         alignItems: 'center'
     },
     // END HANGOUTS PAGE STYLING
-
-    // SETTINIGS STYLING
-    settings: {
-        display: 'flex',
-        flexDirection: 'column'
-    }
 }
-
-// forms
-// signUpForm
-// centeredFlexbox
-// friendBox
-// settings

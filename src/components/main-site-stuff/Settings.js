@@ -13,7 +13,7 @@ class Settings extends Component {
     }
     render(){
         return (
-            <div style={styles.settings}>
+            <div style={styles.columnFlexbox}>
                 <button onClick={this.logout}>
                     Logout
                 </button>

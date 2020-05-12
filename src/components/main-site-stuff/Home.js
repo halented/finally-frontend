@@ -27,7 +27,7 @@ class Home extends Component {
         if(this.state.topFriends.length > 0){
             return this.state.topFriends.map(int=>{
                 return (
-                    <div style={styles.friendBox} key={int.id}>
+                    <div style={styles.columnFlexbox} key={int.id}>
                         <span style={styles.friendName}>{int.name}</span>
                         <IntrovertLink int={int} key={int.id}/>
                     </div>

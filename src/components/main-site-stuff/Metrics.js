@@ -12,7 +12,7 @@ const h3Style = Object.assign(styles.shadowed, {width: '80%'})
 
 function Metrics(){
         return (
-            <div style={styles.centeredFlexbox}>
+            <div style={styles.columnFlexbox}>
                 <h3 style={h3Style}>Introvert Interaction Metrics</h3>
                     <VictoryChart theme={VictoryTheme.material}>
                             <VictoryLine 
