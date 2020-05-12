@@ -1,21 +1,26 @@
 import React from 'react';
 import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory'
-const data = [{'week': 1, 'hangouts': 4}, {'week': 2, 'hangouts': 7},{'week': 3, 'hangouts': 6}]
+const data = [
+    {x: 1, y: 4}, 
+    {x: 2, y: 7},
+    {x: 3, y: 6}
+]
+
+
 function Metrics(){
         return (
             <>
                 <h1>Ya Metrics</h1>
                 <VictoryChart theme={VictoryTheme.material}>
                     <VictoryAxis tickValues={[1,2,3]}/>
-                    <VictoryAxis dependentAxis tickValues={[2,4,6,8,10]}/>
-                    {/* <VictoryStack colorScale='warm'> */}
+                    <VictoryAxis dependentAxis tickFormat={[0, 2,4,6,8,10]}/>
                         <VictoryLine 
-                            style={{data: {stroke: "#c43a31"}, parent: { border: "1px solid #ccc"}}} 
+                            style={{
+                                data: {stroke: "rgb(235, 214, 214)"}, 
+                                parent: { border: "1px solid #ccc"}
+                            }} 
                             data={data} 
-                            x='week' 
-                            y='hangout'
                         />
-                    {/* </VictoryStack> */}
                 </VictoryChart>
             </>
         )
