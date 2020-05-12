@@ -43,11 +43,9 @@ function Hangouts(){
             for(let i=0;i<3;i++){
                 date[i] = i === 1 ? months[parseInt(date[i])-1] : parseInt(date[i])
             }
-            // date = date.map(el=>parseInt(el))
-            
-            // debugger;
         return (
-            <div style={hangBoxStyle}>
+            // give it the key of the hangout id in case we want it later
+            <div style={hangBoxStyle} key={hang[key][2]}>
                 On {date[1]} {date[2]}, {date[0]}, you and {hang[key][0]} participated in {key}.
             </div>
         )

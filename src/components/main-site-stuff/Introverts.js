@@ -21,9 +21,9 @@ class Introverts extends Component {
                 {this.state.introvs.length>0 ? 
                 this.state.introvs.map(int=>{
                     return (
-                        <div style={styles.friendBox}>
+                        <div style={styles.friendBox} key={int.id}>
                             <span>{int.name}</span>
-                            <IntrovertLink int={int} style={{maxHeight: '10%'}} key={int.id}/>
+                            <IntrovertLink int={int} style={{maxHeight: '10%'}} />
                         </div>
                     )
                     // eventually add a hover style that displays the introvert's name
