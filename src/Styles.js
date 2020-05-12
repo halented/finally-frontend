@@ -1,5 +1,6 @@
 export const changeApp = () => {
     // to be used for dark/lightmode
+    // someday
 }
 
 export const styles = {

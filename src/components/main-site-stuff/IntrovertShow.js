@@ -18,6 +18,7 @@ class IntrovertShow extends Component {
     }
 }
 
+// put more info in here
 export default Radium(IntrovertShow)
 
 // REFACTOR THIS PAGE TO ABSTRACT STYLE GUIDES

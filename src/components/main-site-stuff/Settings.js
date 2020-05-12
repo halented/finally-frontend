@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { styles, changeapp } from '../../Styles';
+import { styles, changeApp } from '../../Styles';
 
 class Settings extends Component {
     logout = () => {
@@ -9,7 +9,7 @@ class Settings extends Component {
         }
     }
     lightsOn = () => {
-
+        console.log(changeApp)
     }
     render(){
         return (
@@ -17,14 +17,14 @@ class Settings extends Component {
                 <button onClick={this.logout}>
                     Logout
                 </button>
-                <button>
+                <button onClick={()=>console.log("this button is a lie")}>
                     Personal Info
                 </button>
                 <button onClick={this.lightsOn}>
                     Lights On
                 </button>
                 <button onClick={this.logout}>
-                    Logout
+                    Surely you needed another button
                 </button>
             </div>
 
