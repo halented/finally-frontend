@@ -24,6 +24,7 @@ const months = [
     "December"]
 
 const hangBoxStyle = Object.assign(styles.hangBox, styles.shadowed)
+const outerHangStyle = Object.assign(styles.outerHangBox, styles.columnFlexbox)
 
 function Hangouts(){
     const [ hangouts, alterHangouts ] = useState([])
@@ -52,7 +53,7 @@ function Hangouts(){
         })
     }
         return (
-            <div style={styles.outerHangBox}>
+            <div style={outerHangStyle}>
                 {displayHangs()}
             </div>
         )

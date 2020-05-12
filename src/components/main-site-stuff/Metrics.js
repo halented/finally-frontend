@@ -1,5 +1,5 @@
 import React from 'react';
-import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory'
+import { VictoryChart, VictoryTheme, VictoryLine } from 'victory'
 import { styles } from '../../Styles'
 const data = [
     {x: 1, y: 4}, 
@@ -7,7 +7,7 @@ const data = [
     {x: 3, y: 6}
 ]
 
-const h3Style = Object.assign(styles.shadowed, {width: '80%'})
+const h3Style = Object.assign(styles.shadowed, {width: '75%'})
 
 
 function Metrics(){
@@ -28,6 +28,3 @@ function Metrics(){
 }
 
 export default Metrics
-
-// <VictoryAxis tickValues={[1,2,3]}/>
-// <VictoryAxis dependentAxis tickFormat={[0, 2,4,6,8,10]}/>

@@ -14,9 +14,10 @@ export const styles = {
     },
     columnFlexbox: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        alignItems: 'center'
     },
-    // 
+    // END REUSABLE PARTS
     forms: {
         height: '80%',
         width: '65%',
@@ -162,8 +163,6 @@ export const styles = {
         padding: '2%'
     },
     outerHangBox: {
-        display: 'flex',
-        flexDirection:'column',
         alignItems: 'center'
     },
     // END HANGOUTS PAGE STYLING
