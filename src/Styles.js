@@ -12,10 +12,12 @@ export const styles = {
         'WebkitBoxShadow': '0 0 10px #000000',
         boxShadow: '0 0 10px #000000'
     },
+    columnFlexbox: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
     // 
     forms: {
-        display: 'flex',
-        flexDirection: 'column',
         height: '80%',
         width: '65%',
         alignSelf: 'center',
@@ -83,8 +85,6 @@ export const styles = {
         justifyContent: 'center'
     },
     signUpForm: {
-        display: 'flex',
-        flexDirection: 'column',
         maxWidth: '30vh',
         alignItems: 'center',
         alignSelf: 'center',
@@ -109,10 +109,6 @@ export const styles = {
         flexDirection: 'row',
         display: 'flex',
         justifyContent: 'space-around'
-    },
-    linkBox: {
-        display: 'flex',
-        flexDirection: 'column'
     },
     indicator: {
         boxShadow: '0 0 12px 6px lightgrey, 0 0 20px 12px rgb(235, 214, 214), 0 0 28px 18px #0ff',
@@ -182,3 +178,9 @@ export const styles = {
         flexDirection: 'column'
     }
 }
+
+// forms
+// signUpForm
+// centeredFlexbox
+// friendBox
+// settings

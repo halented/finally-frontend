@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { styles } from '../../Styles'
 
-const formBoxStyle = Object.assign(styles.forms, styles.shadowed)
+const formBoxStyle = Object.assign(styles.forms, styles.shadowed, styles.columnFlexbox)
 
 class Form extends Component {
     state= {

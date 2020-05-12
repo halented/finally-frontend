@@ -4,6 +4,8 @@ import { styles } from '../../Styles';
 import Radium from 'radium';
 import { services } from '../../apiServices'
 
+const formStyle = Object.assign(styles.signUpForm, styles.columnFlexbox)
+
 
 class Signup extends Component {
 
@@ -57,7 +59,7 @@ class Signup extends Component {
             <div className='App' style={styles.signUpBase}>
                 <img src={icon} style={styles.signUpImg} alt='Finally! App Icon'></img>
                 ENTER DETAILS BELOW
-                <form onSubmit={(ev)=>{this.signUpOrIn(ev)}} style={styles.signUpForm}>
+                <form onSubmit={(ev)=>{this.signUpOrIn(ev)}} style={formStyle}>
                     <input 
                         placeholder='email' 
                         name='email' 
