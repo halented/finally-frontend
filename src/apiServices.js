@@ -25,6 +25,13 @@ const fetchData = () => {
     })
 }
 
+const fetchChartData = () => {
+    return fetch(`${URL_ROOT}/users/${parseInt(localStorage.getItem('userId'))}/chart`)
+    .then(res=> {
+        return res.json()
+    })
+}
+
 const postIntrovert = (postData) => {
     return fetch(`${URL_ROOT}/introverts`, {
         method: 'POST', 
@@ -49,5 +56,6 @@ export const services = {
     fetchData,
     postIntrovert,
     postHangout,
-    signIn
+    signIn,
+    fetchChartData
 }
