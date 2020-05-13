@@ -17,7 +17,7 @@ function IntrovertShow(props){
                 </div>
                 <div style={styles.columnFlexbox}>
                     <span>Recharge activity: {activity}</span>
-                    {/* add a link for more info on the activity? */}
+                    {/* add a button to speed up the cooldown if the introvert participated in their activity */}
                     <span>{name.toUpperCase()} is currently {
                         on_cooldown ? 
                             "on cooldown. Check back later to see if you can hangout."

@@ -3,12 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { styles } from '../../Styles'
 import { services } from '../../apiServices'
 
-// componentDidMount(){
-//     services.fetchData()
-//     .then(json=> {
-//         this.setState({introvs: json.introverts})
-//     })
-// } 
 const months = [
     "January",
     "February",

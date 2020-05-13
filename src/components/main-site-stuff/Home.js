@@ -54,7 +54,10 @@ class Home extends Component {
             }
         })
         services.postIntrovert(postData)
-        .then(json=>console.log("gotta do some front end feedback here to prove you saved it"))
+        .then(json=>{
+            console.log("gotta do some front end feedback here to prove you saved it")
+            // we should absolutely be updating the state here
+        })
     }
 
     saveHangout = (ev) => {
@@ -65,6 +68,7 @@ class Home extends Component {
         })
         services.postHangout(postData)
         .then(json=> {
+            // we should absolutely be updating the state here
             if(json.error){
                 alert(json.error)
             }
