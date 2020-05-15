@@ -19,7 +19,7 @@ import Settings from './components/main-site-stuff/Settings'
 class App extends Component {
 
   state = {
-    show: "signup",
+    show: "preshow",
     user: 'none',
     introverts: []
   }

@@ -3,6 +3,9 @@ import { IntrovertLink } from './IntrovertLink';
 import { services } from '../../apiServices'
 import { styles } from '../../Styles';
 
+const h3Style = Object.assign(styles.shadowed, {width: '75%'})
+const boxyStyle = Object.assign(styles.columnFlexbox, {padding: '5%'})
+
 
 class Introverts extends Component {
     state = {
@@ -17,7 +20,8 @@ class Introverts extends Component {
     } 
     render(){
         return (
-            <div style={{padding: '5%'}}>
+            <div style={boxyStyle}>
+                <h3 style={h3Style}>All Your Introverts</h3>
                 {this.state.introvs.length>0 ? 
                 this.state.introvs.map(int=>{
                     return (

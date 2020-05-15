@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { VictoryChart, VictoryTheme, VictoryLine, VictoryAxis } from 'victory'
+import { VictoryChart, VictoryTheme, VictoryLine } from 'victory'
 import { styles } from '../../Styles'
 import { services } from '../../apiServices'
 
