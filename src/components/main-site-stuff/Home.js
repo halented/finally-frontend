@@ -6,7 +6,7 @@ import { IntrovertLink } from './IntrovertLink';
 import { styles } from '../../Styles'
 import { services } from '../../apiServices'
 
-const h3Style = Object.assign(styles.shadowed, {width: '75%'})
+const h3Style = Object.assign({width: '75%'}, styles.shadowed)
 
 class Home extends Component {
     state= {
@@ -81,7 +81,7 @@ class Home extends Component {
     render(){
         return (
             <div style={styles.homeBase}>
-                {/* <h3 style={h3Style}>Your Top Introverts</h3> */}
+                {/* <h3 style={h3Style}>Your Top Introverts</h3> grid is making this all messed up lol*/}
                 <div style={styles.topFriendsDiv}>{this.setPics()}</div>
                 <div style={styles.buttonHolder}>
                     {this.state.showForm === true?

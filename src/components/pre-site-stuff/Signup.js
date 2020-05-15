@@ -4,7 +4,7 @@ import { styles } from '../../Styles';
 import Radium from 'radium';
 import { services } from '../../apiServices'
 
-const formStyle = Object.assign(styles.signUpForm, styles.columnFlexbox)
+const formStyle = Object.assign({}, styles.signUpForm, styles.columnFlexbox)
 
 
 class Signup extends Component {

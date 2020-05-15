@@ -5,9 +5,10 @@ class Settings extends Component {
     logout = () => {
         if(window.confirm("Are you sure you'd like to logout?")){
             localStorage.clear()
-            window.location.replace(`http://localhost:3001/#/`)
+            this.props.logoutShow()
         }
     }
+
     lightsOn = () => {
         console.log(changeApp)
     }

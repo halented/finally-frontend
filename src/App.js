@@ -42,6 +42,12 @@ class App extends Component {
     }
   }
 
+  logoutShow = () => {
+    this.setState({show: 'preshow'}, window.location.replace(`http://localhost:3001/#/`))
+     // window.location.replace(`http://localhost:3001/#/`)
+      // window.location.href='#/'
+  }
+
 
   mainApp = () => {
     return (
@@ -59,13 +65,16 @@ class App extends Component {
             <Route exact path='/introverts' component={Introverts}/>
             <Route exact path='/hangouts' component={Hangouts}/>
             <Route exact path='/metrics' component={Metrics}/>
-            <Route exact path='/settings' component={Settings}/>
+            <Route exact path="/settings" render={props => 
+                (<Settings {...props} logoutShow={this.logoutShow}/>)}/>
+            {/* pass settings the show state and fire a function to change it back to preshow ? which would trigger a re-render and realize there is no token? */}
           </Switch>
         </div>
       </Router>
     )
   }
 
+  // <Route exact path='/settings' component={Settings}/>
 
   conditionalRender = () => {
     if(localStorage.getItem('token')){

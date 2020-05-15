@@ -3,8 +3,8 @@ import { IntrovertLink } from './IntrovertLink';
 import { services } from '../../apiServices'
 import { styles } from '../../Styles';
 
-const h3Style = Object.assign(styles.shadowed, {width: '75%'})
-const boxyStyle = Object.assign(styles.columnFlexbox, {padding: '5%'})
+const h3Style = Object.assign({width: '75%'}, styles.shadowed)
+const boxyStyle = Object.assign({padding: '5%'}, styles.columnFlexbox)
 
 
 class Introverts extends Component {

@@ -4,7 +4,8 @@ import { styles } from '../../Styles'
 import { services } from '../../apiServices'
 
 
-const h3Style = Object.assign(styles.shadowed, {width: '75%'})
+const h3Style = Object.assign({width: '75%'}, styles.shadowed)
+
 const months = [
     "January",
     "February",
