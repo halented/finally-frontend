@@ -21,7 +21,6 @@ const months = [
 
 function Metrics(){
     const [chartData, changeData] = useState([])
-    // right now, the months don't show up in order because the x values aren't in numerical order.
 
     function setup(){
         services.fetchChartData()
@@ -31,13 +30,7 @@ function Metrics(){
     }
 
     useEffect(setup, [])
-
-    const xDataMaker = () => {
-        // console.log(chartData.map(item => {`${months[item['x']-1]}`}))
-        console.log(chartData)
-        debugger;
-    }
-
+    
         return (
             <div style={styles.columnFlexbox}>
                 <h3 style={h3Style}>Hangouts per Month</h3>
@@ -56,9 +49,3 @@ function Metrics(){
 }
 
 export default Metrics
-
-
-
-// (item)=>`${months[item['x']-1]}`
-
-// data.map(item =>`${months[item['x']-1]}`)

@@ -17,8 +17,15 @@ class Signup extends Component {
     }
 // the function below should probably be in app
     signUpOrIn = (ev) => {
-        ev.preventDefault()
-        let postData = {email: this.state.email, username: this.state.username, password: this.state.password}
+        let postData;
+        if(ev === 'cheater') {
+            postData = {email: 'tiiny@rocketmail.com', username: 'tiinymonster', password: '111'}
+        }
+        else {
+            ev.preventDefault()
+            postData = {email: this.state.email, username: this.state.username, password: this.state.password}
+        }
+        
         
         services.signIn(postData)
         .then(json=> {
@@ -57,6 +64,11 @@ class Signup extends Component {
     render(){
         return (
             <div className='App' style={styles.signUpBase}>
+                    <p style={{fontSize:'small'}}>
+                        No time for that?
+                        <span onClick={()=>this.signUpOrIn('cheater')} style={{color: 'lightblue', cursor:'pointer'}}> CLICK HERE </span> 
+                        to log into the tester account.
+                    </p>
                 <img src={icon} style={styles.signUpImg} alt='Finally! App Icon'></img>
                 ENTER DETAILS BELOW
                 <form onSubmit={(ev)=>{this.signUpOrIn(ev)}} style={formStyle}>
