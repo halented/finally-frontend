@@ -70,11 +70,21 @@ class Home extends Component {
         })
         services.postHangout(postData)
         .then(json=> {
-            // we should absolutely be updating the state here
+            // use the introvert that comes back from this to update the state of allIntroverts
             if(json.error){
                 alert(json.error)
             }
-            else alert("Hangout saved!")
+            else {
+                // let tempInts = 
+                let replacementArr = this.state.allIntroverts.slice().map(int=>{
+                    if (int.id === json.introvert.id){
+                        return json.introvert
+                    }
+                    else return int
+                })
+                this.setState({allIntroverts: replacementArr}, alert("Hangout saved!"))
+                // this did not work :( when you go to the introvert show page it still tells you that you can hang out until you refresh the page
+            }
         })
     }
 
