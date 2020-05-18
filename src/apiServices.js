@@ -52,10 +52,20 @@ const postHangout = (postData) => {
         })
 }
 
+const fetchHangout = (id) => {
+    return fetch(`${URL_ROOT}/hangouts/${id}`, {
+        method: 'GET', 
+        headers: headers()})
+        .then(res=>{
+            return res.json()
+        })
+}
+
 export const services = { 
     fetchData,
     postIntrovert,
     postHangout,
     signIn,
-    fetchChartData
+    fetchChartData,
+    fetchHangout
 }

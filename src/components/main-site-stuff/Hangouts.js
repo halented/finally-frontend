@@ -25,7 +25,7 @@ function Hangouts(){
     const [ hangouts, alterHangouts ] = useState([])
     useEffect(setHangouts, [])
 
-    const [ show, alterShow ] = useState(false)
+    const [ show, alterShow ] = useState(true)
     const [ oneHang, alterOneHang ] = useState({})
 
     function setHangouts(){
@@ -35,21 +35,29 @@ function Hangouts(){
         })
     }
 
-    function showModal(hang){
-        !!hang ? alterShow(true) : alterShow(hang)
-        alterOneHang(hang)
+    function showModal(id){
+        if(!id){
+            alterShow(id)
+            return
+        }
+        alterShow(true)
+        // fetch hang data
+        services.fetchHangout(id)
+        .then(json=>alterOneHang(json))
     }
 
     function displayHangs(){
         return hangouts.map(hang=>{
             let key = Object.keys(hang)[0]
             let date = hang[key][1].split("-")
+            let id = hang[key][2]
+
             for(let i=0;i<3;i++){
                 date[i] = i === 1 ? months[parseInt(date[i])-1] : parseInt(date[i])
             }
         return (
             // give it the key of the hangout id in case we want it later
-            <div style={hangBoxStyle} key={hang[key][2]} onClick={()=>showModal(key)}>
+            <div style={hangBoxStyle} key={id} onClick={()=>showModal(id)}>
                 On {date[1]} {date[2]}, {date[0]}, you and {hang[key][0]} participated in {key}.
             </div>
         )
@@ -59,10 +67,22 @@ function Hangouts(){
         return (
             <div style={outerHangStyle}>
                 {show ? 
-                    <div style={styles.fuzzed}>
+                    <div style={styles.fuzzed} onClick={()=>showModal(false)}>
                         <div style={styles.modalContent}>
                             <span style={styles.closeModal} onClick={()=>showModal(false)}>&times;</span>
-                            <div>{oneHang}</div>
+                            {oneHang.hangout? 
+                            <div>
+                                <span style={{fontWeight: 'bold'}}>Partcipants: </span>
+                                <div>{oneHang.hangout.friendship.user.name} (You!),</div>
+                                <div>{oneHang.hangout.friendship.introvert.name}</div>
+                                <span style={{fontWeight: 'bold'}}>Activity & Equipment: </span>
+                                <div>{oneHang.hangout.purpose.title.toUpperCase()}</div>
+                                <div>Equipment: {oneHang.hangout.purpose.equipment}</div>
+                                <div>Intensity Level: {oneHang.hangout.purpose.intensity}</div>
+                            </div>
+                            : 
+                            <div>l o a d i n g . . .</div>}
+                            
                         </div>
                     </div> 
                 : null}

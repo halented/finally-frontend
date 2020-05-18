@@ -4,7 +4,7 @@
 .App {
   background-color: #282c34;
   /* background-color: #8591ab; */
-  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   text-align: center;

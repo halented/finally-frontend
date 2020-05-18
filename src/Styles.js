@@ -17,7 +17,7 @@ export const styles = {
         alignItems: 'center'
     },
     fuzzed: {
-        position: 'fixed',
+        position: 'absolute',
         zIndex: 1,
         width: '100%',
         height: '100%',
@@ -187,7 +187,9 @@ export const styles = {
         padding: '2%'
     },
     outerHangBox: {
-        alignItems: 'center'
+        alignItems: 'center',
+        height: '100vh',
+        overflow: 'scroll',
     },
     // END HANGOUTS PAGE STYLING
 }
