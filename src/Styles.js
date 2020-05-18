@@ -16,6 +16,31 @@ export const styles = {
         flexDirection: 'column',
         alignItems: 'center'
     },
+    fuzzed: {
+        position: 'fixed',
+        zIndex: 1,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0,0,0,0.4)'
+    },
+    modalContent: {
+        backgroundColor: 'rgb(223, 218, 218)',
+        color: '#282c34',
+        bMozBoxShadow: '0 0 10px rgba(240, 234, 234, 0.5)',
+        'WebkitBoxShadow': '0 0 10px rgba(240, 234, 234, 0.5)',
+        boxShadow: '0 0 10px rgba(240, 234, 234, 0.5)',
+        margin: '15% auto',
+        padding: '15px',
+        border: '1px solid #888',
+        width: '70%'
+    },
+    closeModal: {
+        color: '#aaa',
+        float: 'right',
+        fontSize: '28px',
+        fontWeight: 'bold',
+        cursor: 'pointer'
+    },
     // END REUSABLE PARTS
     forms: {
         height: '80%',

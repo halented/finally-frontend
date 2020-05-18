@@ -24,9 +24,6 @@ class Settings extends Component {
                 <button onClick={this.lightsOn}>
                     Lights On
                 </button>
-                <button onClick={this.logout}>
-                    Surely you needed another button
-                </button>
             </div>
 
         )
