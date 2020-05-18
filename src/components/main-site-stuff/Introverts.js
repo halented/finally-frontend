@@ -4,7 +4,7 @@ import { services } from '../../apiServices'
 import { styles } from '../../Styles';
 
 const h3Style = Object.assign({width: '75%'}, styles.shadowed)
-const boxyStyle = Object.assign({padding: '5%'}, styles.columnFlexbox)
+const boxyStyle = Object.assign({padding: '5%', overflow: 'scroll'}, styles.columnFlexbox)
 
 
 class Introverts extends Component {

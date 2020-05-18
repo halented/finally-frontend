@@ -25,7 +25,7 @@ function Hangouts(){
     const [ hangouts, alterHangouts ] = useState([])
     useEffect(setHangouts, [])
 
-    const [ show, alterShow ] = useState(true)
+    const [ show, alterShow ] = useState(false)
     const [ oneHang, alterOneHang ] = useState({})
 
     function setHangouts(){
