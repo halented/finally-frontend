@@ -26,6 +26,7 @@ function Hangouts(){
     useEffect(setHangouts, [])
 
     const [ show, alterShow ] = useState(false)
+    const [ oneHang, alterOneHang ] = useState({})
 
     function setHangouts(){
         services.fetchData()
@@ -36,8 +37,7 @@ function Hangouts(){
 
     function showModal(hang){
         !!hang ? alterShow(true) : alterShow(hang)
-
-        // once the click event fires, we would want to change something in state which conditionally renders the modal.
+        alterOneHang(hang)
     }
 
     function displayHangs(){
@@ -49,7 +49,7 @@ function Hangouts(){
             }
         return (
             // give it the key of the hangout id in case we want it later
-            <div style={hangBoxStyle} key={hang[key][2]} onClick={()=>showModal(hang)}>
+            <div style={hangBoxStyle} key={hang[key][2]} onClick={()=>showModal(key)}>
                 On {date[1]} {date[2]}, {date[0]}, you and {hang[key][0]} participated in {key}.
             </div>
         )
@@ -62,7 +62,7 @@ function Hangouts(){
                     <div style={styles.fuzzed}>
                         <div style={styles.modalContent}>
                             <span style={styles.closeModal} onClick={()=>showModal(false)}>&times;</span>
-                            <div>Hangout info</div>
+                            <div>{oneHang}</div>
                         </div>
                     </div> 
                 : null}
