@@ -5,6 +5,7 @@ import { services } from '../../apiServices'
 
 
 const h3Style = Object.assign({width: '75%'}, styles.shadowed)
+const graphBox = Object.assign({overflow: 'scroll'}, styles.columnFlexbox)
 
 const months = [
     "January",
@@ -33,7 +34,7 @@ function Metrics(){
     useEffect(setup, [])
     
         return (
-            <div style={styles.columnFlexbox}>
+            <div style={graphBox}>
                 <h3 style={h3Style}>Hangouts per Month</h3>
                     <VictoryChart theme={VictoryTheme.material} >
                         <VictoryLine 

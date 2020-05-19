@@ -8,7 +8,7 @@ function IntrovertShow(props){
     const { name, activity, on_cooldown} = props.int
 
         return (
-            <>
+            <div style={{overflow: 'scroll'}}>
                 <div style={{margin: '2%'}}>
                     <IntrovertLink int={props.int}/>
                 </div>
@@ -26,7 +26,7 @@ function IntrovertShow(props){
                         }
                     </span>
                 </div>
-            </>
+            </div>
         )
 }
 

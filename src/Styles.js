@@ -161,7 +161,8 @@ export const styles = {
         display: 'flex',
         margin: 'auto',
         gridArea: '1 / 1 / 3 / 6',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        paddingTop: '2%'
     },
     friendName: {
         fontSize: 'small'
@@ -173,7 +174,8 @@ export const styles = {
     },
     // END HOME PAGE STYLING
     friendCircle: {
-        maxWidth: '65%'
+        maxWidth: '65%',
+        maxHeight: '50%'
     },
     disabled: {
         opacity: '.6'

@@ -20,15 +20,20 @@ class Form extends Component {
     render(){
         return (
             <>
-            {this.props.trait === 'introvert' ? 
-                <form style={formBoxStyle} onSubmit={(ev)=>{this.props.saveIntrovert(ev)}}>
-                    <label>Name:</label>
-                    <input placeholder='name' name='name'></input>
-                    <label>Recharge Activity:</label>
-                    <input placeholder='recharge activity' name='activity'></input>
-                    <button type='submit'>Submit</button>
-                    <span onClick={ () => {this.props.changeShow("")}} style={styles.infoLinks}>Go Back</span>
-                </form>
+            {this.props.trait === 'introvert' ?
+                <div style={styles.fuzzed} onClick={()=>this.props.changeShow("")}>
+                    <div style={styles.modalContent}>
+                        <span style={styles.closeModal} onClick={()=>this.props.changeShow("")}>&times;</span>
+                        <form style={formBoxStyle} onSubmit={(ev)=>{this.props.saveIntrovert(ev)}}>
+                            <label>Name:</label>
+                            <input placeholder='name' name='name'></input>
+                            <label>Recharge Activity:</label>
+                            <input placeholder='recharge activity' name='activity'></input>
+                            <button type='submit'>Submit</button>
+                        </form>
+                    </div>
+                </div> 
+                
             :
                 <form style={formBoxStyle} onSubmit={(ev)=>{this.props.saveHangout(ev)}}>
                     <label>Introvert:</label>
@@ -53,3 +58,5 @@ class Form extends Component {
 }
 
 export default Radium(Form)
+
+// <span onClick={ () => {this.props.changeShow("")}} style={styles.infoLinks}>Go Back</span>
