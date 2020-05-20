@@ -153,14 +153,12 @@ export const styles = {
     // HOME PAGE STYLING
     homeBase: {
         height: '80vh',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(5, 1fr)',
-        gridTemplateRows: 'repeat(5, 1fr)'
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around'
     },
     topFriendsDiv: {
         display: 'flex',
-        margin: 'auto',
-        gridArea: '1 / 1 / 3 / 6',
         justifyContent: 'space-around',
         paddingTop: '2%'
     },
@@ -168,7 +166,6 @@ export const styles = {
         fontSize: 'small'
     },
     buttonHolder: {
-        gridArea: '3 / 1 / 6 / 6',
         display: 'flex',
         justifyContent: 'space-around'
     },
