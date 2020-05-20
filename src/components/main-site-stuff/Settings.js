@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { styles, changeApp } from '../../Styles';
 
+
+const holder = Object.assign({width: '70%', margin: 'auto'}, styles.columnFlexbox, styles.shadowed)
+
 class Settings extends Component {
     logout = () => {
         if(window.confirm("Are you sure you'd like to logout?")){
@@ -14,7 +17,7 @@ class Settings extends Component {
     }
     render(){
         return (
-            <div style={styles.columnFlexbox}>
+            <div style={holder}>
                 <button onClick={this.logout}>
                     Logout
                 </button>

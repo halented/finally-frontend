@@ -6,7 +6,8 @@ import { IntrovertLink } from './IntrovertLink';
 import { styles } from '../../Styles'
 import { services } from '../../apiServices'
 
-const h3Style = Object.assign({width: '75%'}, styles.shadowed)
+const h3Style = Object.assign({width: '75%', alignSelf: 'center'}, styles.shadowed)
+const tallerButton = {height: '50%'}
 
 class Home extends Component {
     state= {
@@ -91,7 +92,7 @@ class Home extends Component {
     render(){
         return (
             <div style={styles.homeBase}>
-                {/* <h3 style={h3Style}>Your Top Introverts</h3> grid is making this all messed up lol*/}
+                <h3 style={h3Style}>Your Top Introverts</h3> 
                 <div style={styles.topFriendsDiv}>{this.setPics()}</div>
                 <div style={styles.buttonHolder}>
                     {this.state.showForm === true?
@@ -106,10 +107,10 @@ class Home extends Component {
                         // render form component based on which element was clicked
                         :
                         <>
-                            <button onClick={()=>this.changeShow('introvert')}>
+                            <button onClick={()=>this.changeShow('introvert')} style={tallerButton}>
                             Add New Introvert!
                             </button>
-                            <button onClick={()=>this.changeShow('hangout')}>
+                            <button onClick={()=>this.changeShow('hangout')} style={tallerButton}>
                                 Add New Hangout!
                             </button>
                         </>
