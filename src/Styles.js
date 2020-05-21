@@ -174,7 +174,9 @@ export const styles = {
     topFriendsDiv: {
         display: 'flex',
         justifyContent: 'space-around',
-        paddingTop: '2%'
+        paddingTop: '2%',
+        height: '90%',
+        alignItems: 'center'
     },
     friendName: {
         fontSize: 'small'
@@ -185,8 +187,8 @@ export const styles = {
     },
     // END HOME PAGE STYLING
     friendCircle: {
-        maxWidth: '65%',
-        maxHeight: '50%'
+        maxWidth: '100%',
+        maxHeight: '100%'
     },
     disabled: {
         opacity: '.6'

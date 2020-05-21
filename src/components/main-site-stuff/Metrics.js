@@ -49,12 +49,12 @@ function Metrics(){
         services.fetchChartData(year)
         .then(json=>{
             if (json.error) {
-                alert(json.error)
+                alert(`${json.error} (${year})`)
             }
             else {
                 changeData(json.data)
                 changeShow(true)
-                changeHeader("Hangouts per Month")
+                changeHeader(`Hangouts per Month in ${year}`)
             }
         })
     }
