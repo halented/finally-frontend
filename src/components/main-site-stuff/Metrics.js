@@ -26,20 +26,20 @@ function Metrics(){
     const [showChart, changeShow] = useState(false)
     const [header, changeHeader] = useState("Hangout Metrics")
 
-    const chartsData =  [
-             {x: 1, y: 4}, 
-             {x: 2, y: 7},
-             {x: 3, y: 0},
-             {x: 4, y: 0},
-             {x: 5, y: 0},
-             {x: 6, y: 0},
-             {x: 7, y: 0},
-             {x: 8, y: 0},
-             {x: 9, y: 0},
-             {x: 10, y: 0},
-             {x: 11, y: 0},
-             {x: 12, y: 0},
-         ]
+    // const chartsData =  [
+    //          {x: 1, y: 4}, 
+    //          {x: 2, y: 7},
+    //          {x: 3, y: 0},
+    //          {x: 4, y: 0},
+    //          {x: 5, y: 0},
+    //          {x: 6, y: 0},
+    //          {x: 7, y: 0},
+    //          {x: 8, y: 0},
+    //          {x: 9, y: 0},
+    //          {x: 10, y: 0},
+    //          {x: 11, y: 0},
+    //          {x: 12, y: 0},
+    //      ]
 // show page, have user select year. repopulate with that year. still need 2 fix labels. 
 // auto set to twelve months with a "maxDomain" of 10 hangouts
 
@@ -48,13 +48,16 @@ function Metrics(){
         const year = parseInt(ev.target.year.value)
         services.fetchChartData(year)
         .then(json=>{
-            changeData(json.data)
-            changeShow(true)
-            changeHeader("Hangouts per Month")
+            if (json.error) {
+                alert(json.error)
+            }
+            else {
+                changeData(json.data)
+                changeShow(true)
+                changeHeader("Hangouts per Month")
+            }
         })
     }
-
-    // useEffect(setup, [])
 
     function populateYears(){
         const year = (new Date()).getFullYear();

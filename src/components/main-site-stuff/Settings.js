@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { styles, changeApp } from '../../Styles';
 import { services } from '../../apiServices'
 
-
-// const holder = Object.assign({width: '70%', margin: 'auto'}, styles.columnFlexbox, styles.shadowed)
 const holder = Object.assign({}, styles.outerHangBox, styles.columnFlexbox)
 const shorterButton = {height: 'auto'}
 const label = {fontWeight: 'bold'}
@@ -20,10 +18,6 @@ class Settings extends Component {
             localStorage.clear()
             this.props.logoutShow()
         }
-    }
-
-    lightsOn = () => {
-        console.log(changeApp)
     }
 
     showModal = (val) => {
@@ -67,7 +61,7 @@ class Settings extends Component {
                     Personal Info
                 </button>
                 <button onClick={this.lightsOn} style={shorterButton}>
-                    Lights On
+                    How to Use
                 </button>
             </div>
 
