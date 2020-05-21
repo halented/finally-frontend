@@ -2,6 +2,20 @@ export const changeApp = () => {
 //    to change btwn light and dark mode eventually
 }
 
+export const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"]
+
 export const styles = {
     // REUSABLE PARTS:
     shadowed: {

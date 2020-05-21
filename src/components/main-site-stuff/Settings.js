@@ -31,8 +31,6 @@ class Settings extends Component {
             this.setState({show: false})
             return
         }
-        // this.setState({show: true})
-        // fetch hang data
         services.fetchData()
         .then(json=>this.setState({show: true, userData: json.user}))
     }

@@ -1,21 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import { styles } from '../../Styles'
+import { styles, months } from '../../Styles'
 import { services } from '../../apiServices'
-
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"]
 
 const hangBoxStyle = Object.assign({}, styles.hangBox, styles.shadowed, {cursor: 'pointer'})
 const outerHangStyle = Object.assign({}, styles.outerHangBox, styles.columnFlexbox)

@@ -25,8 +25,12 @@ const fetchData = () => {
     })
 }
 
-const fetchChartData = () => {
-    return fetch(`${URL_ROOT}/users/${parseInt(localStorage.getItem('userId'))}/chart`)
+const fetchChartData = (year) => {
+    return fetch(`${URL_ROOT}/users/${parseInt(localStorage.getItem('userId'))}/chart`, {
+        method: 'POST', 
+        headers: headers(),
+        body: JSON.stringify({year: year})
+    })
     .then(res=> {
         return res.json()
     })
