@@ -9,10 +9,10 @@ import { services } from '../../apiServices'
 const h3Style = Object.assign({width: '75%', alignSelf: 'center'}, styles.shadowed)
 const tallerButton = {height: '50%'}
 
+
 class Home extends Component {
     state= {
         topFriends: [],
-        allIntroverts: [],
         allPurposes: ["yep", "temporary"],
         showForm: false,
         formType: 'none'
@@ -21,8 +21,10 @@ class Home extends Component {
     componentDidMount(){
         services.fetchData()
         .then(json=> {
-            let temp = json.introverts.slice(0,3)
-            this.setState({topFriends: temp, allIntroverts: json.introverts, allPurposes: json.purposes})
+            // let temp = json.introverts.slice(0,3)
+            let temp = json.introverts.slice(json.introverts.length-3,json.introverts.length)
+            // this is topfriends, your postHangout is only updated allIntroverts
+            this.setState({topFriends: temp, allPurposes: json.purposes})
         })
     }
 
@@ -77,14 +79,19 @@ class Home extends Component {
             }
             else {
                 // let tempInts = 
-                let replacementArr = this.state.allIntroverts.slice().map(int=>{
+                // let ta = [...this.state.allIntroverts]
+                const replacementInts = [...this.props.introverts].map(int=>{
                     if (int.id === json.introvert.id){
                         return json.introvert
                     }
                     else return int
                 })
-                this.setState({allIntroverts: replacementArr}, alert("Hangout saved!"))
-                // this did not work :( when you go to the introvert show page it still tells you that you can hang out until you refresh the page
+                const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)
+                this.setState({topFriends: replacementFriends}, ()=>{
+                    this.props.updateRoutes(replacementInts)
+                    alert("Hangout saved!")
+                })
+                // topFriends needs to be updated as well
             }
         })
     }
@@ -100,7 +107,7 @@ class Home extends Component {
                             trait={this.state.formType} 
                             saveIntrovert={this.saveIntrovert} 
                             changeShow={this.changeShow} 
-                            introverts={this.state.allIntroverts} 
+                            introverts={this.props.introverts} 
                             purposes={this.state.allPurposes} 
                             saveHangout={this.saveHangout}
                         />

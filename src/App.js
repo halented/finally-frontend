@@ -46,6 +46,10 @@ class App extends Component {
     this.setState({show: 'preshow'}, window.location.replace(`http://localhost:3001/#/`))
   }
 
+  updateRoutes = (introvs) => {
+    this.setState({introverts: introvs})
+  }
+
 
   mainApp = () => {
     return (
@@ -58,8 +62,10 @@ class App extends Component {
                 (<IntrovertShow {...props} int={x}/>)
               }/>
             })}
-            <Route exact path='/home' component={Home}/>
-            <Route exact path='/' component={Home}/>
+            <Route exact path='/home' render={props => 
+                (<Home {...props} introverts={this.state.introverts} updateRoutes={this.updateRoutes}/>)}/>
+            <Route exact path='/' render={props => 
+                (<Home {...props} introverts={this.state.introverts} updateRoutes={this.updateRoutes}/>)}/>
             <Route exact path='/introverts' component={Introverts}/>
             <Route exact path='/hangouts' component={Hangouts}/>
             <Route exact path='/metrics' component={Metrics}/>

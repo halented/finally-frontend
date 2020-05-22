@@ -169,7 +169,8 @@ export const styles = {
         height: '80vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        overflow: 'scroll'
     },
     topFriendsDiv: {
         display: 'flex',
@@ -187,8 +188,8 @@ export const styles = {
     },
     // END HOME PAGE STYLING
     friendCircle: {
-        maxWidth: '100%',
-        maxHeight: '100%'
+        maxWidth: '90%',
+        maxHeight: '90%'
     },
     disabled: {
         opacity: '.6'

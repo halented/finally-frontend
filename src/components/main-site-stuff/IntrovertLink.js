@@ -9,23 +9,24 @@ import flam from '../../images/flam.png'
 import koala from '../../images/koala.png'
 import fallback from '../../images/octi.png'
 // test interpolating string from backend into local URL
-
+const lowOpacityFriend = Object.assign({}, styles.friendCircle, {opacity: '.4'})
 
 export const IntrovertLink = (props) => {
-    switch(props.int.img_ref){
+    const {img_ref, on_cooldown} = props.int
+    switch(img_ref){
         case 'bear':
-            return  <Link to={`/introverts/${props.int.id}`}><img src={bear} alt={props.int.name} style={styles.friendCircle}/> </Link>
+            return  <Link to={`/introverts/${props.int.id}`}><img src={bear} alt={props.int.name} style={on_cooldown? lowOpacityFriend :styles.friendCircle}/> </Link>
         case 'bull':
-            return <Link to={`/introverts/${props.int.id}`}><img src={bull} alt={props.int.name} style={styles.friendCircle}/></Link>
+            return <Link to={`/introverts/${props.int.id}`}><img src={bull} alt={props.int.name} style={on_cooldown? lowOpacityFriend :styles.friendCircle}/></Link>
         case 'bun':
-            return <Link to={`/introverts/${props.int.id}`}><img src={bun} alt={props.int.name} style={styles.friendCircle}/></Link>
+            return <Link to={`/introverts/${props.int.id}`}><img src={bun} alt={props.int.name} style={on_cooldown? lowOpacityFriend :styles.friendCircle}/></Link>
         case 'dog':
-            return <Link to={`/introverts/${props.int.id}`}><img src={dog} alt={props.int.name} style={styles.friendCircle}/></Link>
+            return <Link to={`/introverts/${props.int.id}`}><img src={dog} alt={props.int.name} style={on_cooldown? lowOpacityFriend :styles.friendCircle}/></Link>
         case 'flam':
-            return <Link to={`/introverts/${props.int.id}`}><img src={flam} alt={props.int.name} style={styles.friendCircle}/></Link>
+            return <Link to={`/introverts/${props.int.id}`}><img src={flam} alt={props.int.name} style={on_cooldown? lowOpacityFriend :styles.friendCircle}/></Link>
         case 'koala':
-            return <Link to={`/introverts/${props.int.id}`}><img src={koala} alt={props.int.name} style={styles.friendCircle}/></Link>
+            return <Link to={`/introverts/${props.int.id}`}><img src={koala} alt={props.int.name} style={on_cooldown? lowOpacityFriend :styles.friendCircle}/></Link>
         default:
-            return <Link to={`/introverts/${props.int.id}`}><img src={fallback} alt={props.int.name} style={styles.friendCircle}/></Link>
+            return <Link to={`/introverts/${props.int.id}`}><img src={fallback} alt={props.int.name} style={on_cooldown? lowOpacityFriend :styles.friendCircle}/></Link>
     }
 }
