@@ -8,6 +8,8 @@ import { services } from '../../apiServices'
 
 const h3Style = Object.assign({width: '75%', alignSelf: 'center'}, styles.shadowed)
 const tallerButton = {height: '50%'}
+const imgArray = ["bear", "bull", "bun", "dog", "flam", "koala", "fallback"]
+
 
 
 class Home extends Component {
@@ -21,9 +23,7 @@ class Home extends Component {
     componentDidMount(){
         services.fetchData()
         .then(json=> {
-            // let temp = json.introverts.slice(0,3)
             let temp = json.introverts.slice(json.introverts.length-3,json.introverts.length)
-            // this is topfriends, your postHangout is only updated allIntroverts
             this.setState({topFriends: temp, allPurposes: json.purposes})
         })
     }
@@ -54,14 +54,20 @@ class Home extends Component {
             introvert: {
                 name: ev.target.name.value, 
                 activity: ev.target.activity.value, 
-                img_ref: 'default', 
+                img_ref: imgArray[Math.floor(Math.random()*7)], 
                 on_cooldown: false
             }
         })
         services.postIntrovert(postData)
         .then(json=>{
-            console.log("gotta do some front end feedback here to prove you saved it")
-            // we should absolutely be updating the state here
+            // console.log(json)
+            let replacementInts = [...this.props.introverts]
+            replacementInts.push(json.introvert)
+            const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)
+            this.setState({topFriends: replacementFriends}, ()=>{
+                this.props.updateRoutes(replacementInts)
+                alert("Friendo saved!")
+            })
         })
     }
 
