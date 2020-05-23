@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   logoutShow = () => {
-    this.setState({show: 'preshow'}, window.location.replace(`http://localhost:3000/#/`))
+    this.setState({show: 'preshow'}, window.location.replace(`https://finally-app.herokuapp.com/#/`))
   }
 
   updateRoutes = (introvs) => {
