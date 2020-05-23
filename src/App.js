@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Switch} from 'react-router-dom'
-//  NavLink Redirect 
 import './App.css';
 import { services } from './apiServices'
 import Signup from './components/pre-site-stuff/Signup';
@@ -26,11 +25,15 @@ class App extends Component {
 
   componentDidMount(){
     if(localStorage.getItem('token')){
-      services.fetchData()
+      this.setIntroverts()
+    }
+  }
+
+  setIntroverts = () => {
+    services.fetchData()
       .then(json=> {
           this.setState({introverts: json.introverts, user: json.user})
       })
-    }
   }
 
   changeShow = (type, introvs = []) => {
@@ -38,12 +41,12 @@ class App extends Component {
       this.setState({show: type, introverts: introvs})
     }
     else {
-      this.setState({show: type})
+      this.setState({show: type, introverts: introvs})
     }
   }
 
   logoutShow = () => {
-    this.setState({show: 'preshow'}, window.location.replace(`http://localhost:3001/#/`))
+    this.setState({show: 'preshow'}, window.location.replace(`http://localhost:3000/#/`))
   }
 
   updateRoutes = (introvs) => {

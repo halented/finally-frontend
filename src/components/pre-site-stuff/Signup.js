@@ -15,7 +15,7 @@ class Signup extends Component {
         password: '',
         isDisabled: true
     }
-// the function below should probably be in app
+// the function below should probably be in app, so that when we do get logged in, it changes the state there (and thereby will trigger a re-render to load up the introvertlink routes & populate the dropdown)
     signUpOrIn = (ev) => {
         let postData;
         if(ev === 'cheater') {
