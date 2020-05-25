@@ -1,5 +1,5 @@
-const URL_ROOT = 'http://localhost:3000'
-// https://finally-backend.herokuapp.com
+const URL_ROOT = 'https://finally-backend.herokuapp.com'
+// http://localhost:3000
 const headers = () => {
     return ({
         'Content-Type': 'application/json',
@@ -49,9 +49,9 @@ const postIntrovert = (postData) => {
 
 const updateIntrovert = (postData) => {
     return fetch(`${URL_ROOT}/introverts/${postData.id}`, {
-        method: 'POST', 
+        method: 'PUT', 
         headers: headers(),
-        body: postData})
+        body: JSON.stringify(postData)})
         .then(res=>{
             return res.json()
         })

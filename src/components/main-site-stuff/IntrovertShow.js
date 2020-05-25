@@ -8,7 +8,7 @@ function IntrovertShow(props){
     const [ charging, changeCharge ] = useState(false)
     const { name, activity, on_cooldown} = props.int
 
-    const pulse = function(){
+    const charge = function(){
         changeCharge(true)
         setTimeout(function(){ 
             props.recharge(props.int)
@@ -32,7 +32,7 @@ function IntrovertShow(props){
                         <>
                             <span>Recharge activity: {activity}</span>
                             {on_cooldown ? 
-                                <button onClick={()=>pulse()}>Recharge!</button>
+                                <button onClick={()=>charge()}>Recharge!</button>
                             :
                             null}
                             <span>{name.toUpperCase()} is currently {

@@ -55,8 +55,13 @@ class App extends Component {
 
   recharge = (int) => {
     int.on_cooldown = false
-    // services.updateIntrovert(int)
-    console.log(int)
+    services.updateIntrovert(int)
+    .then(json=>{
+      if(json.error){
+        alert(json.error)
+      }
+    })
+    
   }
 
 
