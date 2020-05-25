@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styles } from '../../Styles'
 import Radium from 'radium';
 import { IntrovertLink } from './IntrovertLink';
 
 
 function IntrovertShow(props){
+    const [ charging, changeCharge ] = useState(false)
     const { name, activity, on_cooldown} = props.int
+
+    const pulse = function(){
+        changeCharge(true)
+        setTimeout(function(){ 
+            props.recharge(props.int)
+            changeCharge(false)
+        }, 3000)
+    }
+
 
         return (
             <div style={{overflow: 'scroll'}}>
@@ -16,15 +26,24 @@ function IntrovertShow(props){
                     It's {name.toUpperCase()}!
                 </div>
                 <div style={styles.columnFlexbox}>
-                    <span>Recharge activity: {activity}</span>
-                    {/* add a button to speed up the cooldown if the introvert participated in their activity */}
-                    <span>{name.toUpperCase()} is currently {
-                        on_cooldown ? 
-                            "on cooldown. Check back later to see if you can hangout."
-                            : 
-                            <span>not on cooldown. You can hang <span style={{color: 'lightblue'}}>finally</span> hangout!</span>
-                        }
-                    </span>
+                    {charging ?
+                        <div style={styles.pulse}>{name} is charging.....!</div>
+                    :
+                        <>
+                            <span>Recharge activity: {activity}</span>
+                            {on_cooldown ? 
+                                <button onClick={()=>pulse()}>Recharge!</button>
+                            :
+                            null}
+                            <span>{name.toUpperCase()} is currently {
+                                on_cooldown ? 
+                                    "on cooldown. Check back later to see if you can hangout."
+                                    : 
+                                    <span>not on cooldown. You can hang <span style={{color: 'lightblue'}}>finally</span> hangout!</span>
+                                }
+                            </span>
+                        </>
+                    }
                 </div>
             </div>
         )

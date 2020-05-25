@@ -32,7 +32,7 @@ export const styles = {
     },
     fuzzed: {
         position: 'fixed',
-        zIndex: 1,
+        zIndex: '1',
         width: '100%',
         height: '100%',
         backgroundColor: 'rgba(0,0,0,0.4)'
@@ -208,4 +208,26 @@ export const styles = {
         overflow: 'scroll',
     },
     // END HANGOUTS PAGE STYLING
+
+    // INTROVERT SHOW PAGE
+    pulse: {
+        animation: 'pulsate 1s ease-out',
+        animationIterationCount: 'infinite',
+        opacity: '0.5'
+    },
+    // END INTROVERT SHOW PAGE
+}
+
+// not sure how to get @keyframes to work inline with react, but for right now leaving this here
+const pulsate  = {
+    '0%': { 
+        opacity: '0.5',
+    },
+    '50%': { 
+        opacity: '1.0',
+        color: 'white',
+    },
+    '100%': { 
+        opacity: '0.5',
+    }
 }
