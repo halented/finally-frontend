@@ -53,6 +53,17 @@ class App extends Component {
     this.setState({introverts: introvs})
   }
 
+  recharge = (int) => {
+    int.on_cooldown = false
+    services.updateIntrovert(int)
+    .then(json=>{
+      if(json.error){
+        alert(json.error)
+      }
+    })
+    
+  }
+
 
   mainApp = () => {
     return (
@@ -62,7 +73,7 @@ class App extends Component {
           <Switch>
             {this.state.introverts.map(x=>{
               return <Route key={x.id} exact path={`/introverts/${x.id}`} render={props => 
-                (<IntrovertShow {...props} int={x}/>)
+                (<IntrovertShow {...props} int={x} recharge={this.recharge}/>)
               }/>
             })}
             <Route exact path='/home' render={props => 
