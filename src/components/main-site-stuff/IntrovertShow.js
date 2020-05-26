@@ -1,47 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { styles } from '../../Styles'
-import Radium, {StyleRoot} from 'radium';
+import Radium from 'radium';
 import { IntrovertLink } from './IntrovertLink';
 import { pulse } from 'react-animations';
 
 const pulser = {
     pulse: {
-      animation: 'x 1s',
+      animation: 'x 1s infinite',
       animationName: Radium.keyframes(pulse, 'pulse')
     }
   }
-//   moving to new branch b4 i blow this up
 
+class IntrovertShow extends React.Component {
 
-function IntrovertShow(props){
-    const [ charging, changeCharge ] = useState(false)
-    const { name, activity, on_cooldown} = props.int
+    state = {
+        charging: false
+    }
 
-    const charge = function(){
-        changeCharge(true)
-        setTimeout(function(){ 
-            props.recharge(props.int)
-            changeCharge(false)
+    charge = () => {
+        this.setState({charging: true}, this.chargeHelper())
+    }
+
+    chargeHelper = () => {
+        const { recharge, int } = this.props
+        setTimeout(()=>{ 
+            recharge(int)
+            this.setState({charging: false})
         }, 3000)
     }
 
-
+    render() {
+        const { name, activity, on_cooldown} = this.props.int
         return (
             <div style={{overflow: 'scroll'}}>
                 <div style={{margin: '2%'}}>
-                    <IntrovertLink int={props.int}/>
+                    <IntrovertLink int={this.props.int}/>
                 </div>
                 <div style={{fontWeight: 'bold', fontSize: 'xx-large', color: 'lightblue'}}>
                     It's {name.toUpperCase()}!
                 </div>
                 <div style={styles.columnFlexbox}>
-                    {charging ?
-                            <div>{name} is charging.....!</div>
+                    {this.state.charging ?
+                        <div style={pulser.pulse}>{name} is charging.....!</div>
                     :
                         <>
                             <span>Recharge activity: {activity}</span>
                             {on_cooldown ? 
-                                <button onClick={()=>charge()}>Recharge!</button>
+                                <button onClick={()=>this.charge()}>Recharge!</button>
                             :
                             null}
                             <span>{name.toUpperCase()} is currently {
@@ -56,9 +61,7 @@ function IntrovertShow(props){
                 </div>
             </div>
         )
+    }
 }
 
-// put more info in here
 export default Radium(IntrovertShow)
-
-// REFACTOR THIS PAGE TO ABSTRACT STYLE GUIDES
