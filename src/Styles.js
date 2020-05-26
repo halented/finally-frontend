@@ -214,20 +214,7 @@ export const styles = {
         animation: 'pulsate 1s ease-out',
         animationIterationCount: 'infinite',
         opacity: '0.5'
+        // keeping for now but this isn't the right way of doing this
     },
     // END INTROVERT SHOW PAGE
-}
-
-// not sure how to get @keyframes to work inline with react, but for right now leaving this here
-const pulsate  = {
-    '0%': { 
-        opacity: '0.5',
-    },
-    '50%': { 
-        opacity: '1.0',
-        color: 'white',
-    },
-    '100%': { 
-        opacity: '0.5',
-    }
 }

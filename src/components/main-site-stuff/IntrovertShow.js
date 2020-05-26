@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { styles } from '../../Styles'
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import { IntrovertLink } from './IntrovertLink';
+import { pulse } from 'react-animations';
+
+const pulser = {
+    pulse: {
+      animation: 'x 1s',
+      animationName: Radium.keyframes(pulse, 'pulse')
+    }
+  }
+//   moving to new branch b4 i blow this up
 
 
 function IntrovertShow(props){
@@ -27,7 +36,7 @@ function IntrovertShow(props){
                 </div>
                 <div style={styles.columnFlexbox}>
                     {charging ?
-                        <div style={styles.pulse}>{name} is charging.....!</div>
+                            <div>{name} is charging.....!</div>
                     :
                         <>
                             <span>Recharge activity: {activity}</span>
