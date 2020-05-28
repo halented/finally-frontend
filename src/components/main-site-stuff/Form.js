@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { styles } from '../../Styles'
 
-const formBoxStyle = Object.assign({}, styles.forms, styles.shadowed, styles.columnFlexbox)
+const formBoxStyle = Object.assign({margin: '1em', width: 'auto'}, styles.forms, styles.shadowed, styles.columnFlexbox)
 const imgArray = ["bear", "bull", "bunny", "dog", "flamingo", "koala", "octopus"]
 
 class Form extends Component {
