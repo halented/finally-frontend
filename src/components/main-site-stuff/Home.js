@@ -8,7 +8,6 @@ import { services } from '../../apiServices'
 
 const h3Style = Object.assign({width: '75%', alignSelf: 'center'}, styles.shadowed)
 const tallerButton = {height: '50%'}
-const imgArray = ["bear", "bull", "bun", "dog", "flam", "koala", "fallback"]
 
 
 
@@ -17,7 +16,7 @@ class Home extends Component {
         topFriends: [],
         allPurposes: ["yep", "temporary"],
         showForm: false,
-        formType: 'none'
+        formType: ''
     }
 
     componentDidMount(){
@@ -50,11 +49,12 @@ class Home extends Component {
 
     saveIntrovert = (ev) => {
         ev.preventDefault()
+        console.log(ev.target.image.value)
         let postData = JSON.stringify({
             introvert: {
                 name: ev.target.name.value, 
                 activity: ev.target.activity.value, 
-                img_ref: imgArray[Math.floor(Math.random()*7)], 
+                img_ref: ev.target.image.value,
                 on_cooldown: false
             }
         })

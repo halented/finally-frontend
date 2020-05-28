@@ -58,7 +58,6 @@ export const styles = {
     // END REUSABLE PARTS
     forms: {
         height: '80%',
-        width: '65%',
         alignSelf: 'center',
         justifyContent: 'center'
     },
