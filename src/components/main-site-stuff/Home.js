@@ -15,8 +15,8 @@ class Home extends Component {
     state= {
         topFriends: [],
         allPurposes: ["yep", "temporary"],
-        showForm: false,
-        formType: ''
+        showForm: true,
+        formType: 'hangout'
     }
 
     componentDidMount(){

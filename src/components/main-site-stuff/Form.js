@@ -3,6 +3,8 @@ import Radium from 'radium';
 import { styles } from '../../Styles'
 
 const formBoxStyle = Object.assign({margin: '1em', width: 'auto'}, styles.forms, styles.shadowed, styles.columnFlexbox)
+const infoDiv = {fontSize:'small', paddingTop: '2%'}
+const clickable = {color: 'lightblue', cursor: 'pointer'}
 const imgArray = ["bear", "bull", "bunny", "dog", "flamingo", "koala", "octopus"]
 
 class Form extends Component {
@@ -61,6 +63,7 @@ class Form extends Component {
                         return <option value={purpose.title} key={purpose.title}>{purpose.title}</option>
                         })}
                     </select>
+                    <div style={infoDiv}>Not seeing your hangout purpose? <span style={clickable} onClick={something}>CLICK HERE </span>to add a new one</div>
                     <button type='submit'>Submit</button>
                     <span onClick={ () => {this.props.changeShow("")}} style={styles.infoLinks}>Go Back</span>
                 </form>
