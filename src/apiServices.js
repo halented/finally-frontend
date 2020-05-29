@@ -77,10 +77,21 @@ const fetchHangout = (id) => {
         })
 }
 
+const postPurpose = (postData) => {
+    return fetch(`${URL_ROOT}/purposes`, {
+        method: 'POST', 
+        headers: headers(),
+        body: postData})
+        .then(res=>{
+            return res.json()
+        })
+}
+
 export const services = { 
     fetchData,
     postIntrovert,
     postHangout,
+    postPurpose,
     signIn,
     fetchChartData,
     fetchHangout,
