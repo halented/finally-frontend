@@ -61,13 +61,16 @@ class Home extends Component {
         services.postIntrovert(postData)
         .then(json=>{
             // console.log(json)
-            let replacementInts = [...this.props.introverts]
-            replacementInts.push(json.introvert)
-            const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)
-            this.setState({topFriends: replacementFriends}, ()=>{
-                this.props.updateRoutes(replacementInts)
-                alert("Friendo saved!")
-            })
+            if(json.purpose){
+                let replacementInts = [...this.props.introverts]
+                replacementInts.push(json.introvert)
+                const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)
+                this.setState({topFriends: replacementFriends}, ()=>{
+                    this.props.updateRoutes(replacementInts)
+                    alert("Friendo saved!")
+                })
+            }
+            else {alert(json.error)}
         })
     }
 
@@ -102,6 +105,25 @@ class Home extends Component {
         })
     }
 
+    savePurpose = (ev) => {
+        ev.preventDefault()
+        console.log(ev.target.title.value)
+        let postData = JSON.stringify({
+            purpose: {
+                title: ev.target.title.value, 
+                equipment: ev.target.equipment.value, 
+                intensity: ev.target.intensity.value
+            }
+        })
+        services.postPurpose(postData)
+        .then(json=>{
+            console.log(json)
+            let replacementPurposes = [...this.state.allPurposes]
+            replacementPurposes.push(json.purpose)
+            this.setState({allPurposes: replacementPurposes, showForm: true, formType: 'hangout'}, alert("Purpose saved!"))
+        })
+    }
+
     render(){
         return (
             <div style={styles.homeBase}>
@@ -116,6 +138,7 @@ class Home extends Component {
                             introverts={this.props.introverts} 
                             purposes={this.state.allPurposes} 
                             saveHangout={this.saveHangout}
+                            savePurpose={this.savePurpose}
                         />
                         // render form component based on which element was clicked
                         :
