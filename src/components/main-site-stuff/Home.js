@@ -15,8 +15,8 @@ class Home extends Component {
     state= {
         topFriends: [],
         allPurposes: ["yep", "temporary"],
-        showForm: true,
-        formType: 'hangout'
+        showForm: false,
+        formType: ''
     }
 
     componentDidMount(){
@@ -62,9 +62,13 @@ class Home extends Component {
         .then(json=>{
             // console.log(json)
             if(json.purpose){
-                let replacementPurposes = [...this.state.allPurposes]
-                replacementPurposes.push(json.purpose)
-                this.setState({allPurposes: replacementPurposes})
+                let replacementInts = [...this.props.introverts]
+                replacementInts.push(json.introvert)
+                const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)
+                this.setState({topFriends: replacementFriends}, ()=>{
+                    this.props.updateRoutes(replacementInts)
+                    alert("Friendo saved!")
+                })
             }
             else {alert(json.error)}
         })
@@ -114,13 +118,9 @@ class Home extends Component {
         services.postPurpose(postData)
         .then(json=>{
             console.log(json)
-            let replacementInts = [...this.props.introverts]
-            replacementInts.push(json.introvert)
-            const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)
-            this.setState({topFriends: replacementFriends}, ()=>{
-                this.props.updateRoutes(replacementInts)
-                alert("Friendo saved!")
-            })
+            let replacementPurposes = [...this.state.allPurposes]
+            replacementPurposes.push(json.purpose)
+            this.setState({allPurposes: replacementPurposes, showForm: true, formType: 'hangout'}, alert("Purpose saved!"))
         })
     }
 

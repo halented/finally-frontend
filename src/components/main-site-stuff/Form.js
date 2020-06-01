@@ -13,7 +13,7 @@ class Form extends Component {
         purposeValue: '',
         imageValue: '',
         intensity: 0,
-        addPurpose: true
+        addPurpose: false
     }
 
     handleChange = (ev, kind) => {
@@ -42,7 +42,7 @@ class Form extends Component {
         return (
             <>
             {this.state.addPurpose? 
-                <form style={formBoxStyle} onSubmit={(ev)=>{this.props.savePurpose(ev)}}>
+                <form style={formBoxStyle} onSubmit={(ev)=>{this.setState({addPurpose:false},this.props.savePurpose(ev))}}>
                     <label>Title (ex: kickboxing, hiking):</label>
                     <input placeholder='title' name='title'></input>
                     <label>Equipment (ex: gloves):</label>
