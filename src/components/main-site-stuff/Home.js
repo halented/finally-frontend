@@ -60,7 +60,6 @@ class Home extends Component {
         })
         services.postIntrovert(postData)
         .then(json=>{
-            // console.log(json)
             let replacementInts = [...this.props.introverts]
             replacementInts.push(json.introvert)
             const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)

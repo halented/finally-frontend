@@ -81,7 +81,8 @@ class App extends Component {
             <Route exact path='/' render={props => 
                 (<Home {...props} introverts={this.state.introverts} updateRoutes={this.updateRoutes}/>)}/>
             <Route exact path='/introverts' component={Introverts}/>
-            <Route exact path='/hangouts' component={Hangouts}/>
+            <Route exact path='/hangouts' render={props => 
+                (<Hangouts {...props} introverts={this.state.introverts}/>)}/>
             <Route exact path='/metrics' component={Metrics}/>
             <Route exact path="/settings" render={props => 
                 (<Settings {...props} logoutShow={this.logoutShow}/>)}/>
