@@ -60,17 +60,14 @@ class Home extends Component {
         })
         services.postIntrovert(postData)
         .then(json=>{
-            // console.log(json)
-            if(json.purpose){
-                let replacementInts = [...this.props.introverts]
-                replacementInts.push(json.introvert)
-                const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)
-                this.setState({topFriends: replacementFriends}, ()=>{
-                    this.props.updateRoutes(replacementInts)
-                    alert("Friendo saved!")
-                })
-            }
-            else {alert(json.error)}
+
+            let replacementInts = [...this.props.introverts]
+            replacementInts.push(json.introvert)
+            const replacementFriends = replacementInts.slice(replacementInts.length-3,replacementInts.length)
+            this.setState({topFriends: replacementFriends}, ()=>{
+                this.props.updateRoutes(replacementInts)
+                alert("Friendo saved!")
+            })
         })
     }
 
