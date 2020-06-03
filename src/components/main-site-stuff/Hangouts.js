@@ -38,25 +38,54 @@ function Hangouts(props){
     }
 
     function displayHangs(){
-
-        return hangouts.map(hang=>{
-            const hangoutId = hang.hang_id
-            const date = hang.date
-            const friend = hang.introvert[0]
-            const activity = hang.title
-
-        return (
-            // give it the key of the hangout id in case we want it later
-            <div style={hangBoxStyle} key={hangoutId} onClick={()=>showModal(hangoutId)}>
-                {/* kind of awkward, gotta pluck the month from the backend's date and then grab the name from the month array */}
-                On {months[date[0]-1]} {date[1]}, {date[2]}, you and {friend} participated in {activity}.
-            </div>
-        )
-        })
+        if(filteredHangs){
+            return filteredHangs.map(hang=>{
+                const { hang_id, date, introvert, title } = hang
+    
+            return (
+                // give it the key of the hangout id in case we want it later
+                <div style={hangBoxStyle} key={hang_id} onClick={()=>showModal(hang_id)}>
+                    {/* kind of awkward, gotta pluck the month from the backend's date and then grab the name from the month array */}
+                    On {months[date[0]-1]} {date[1]}, {date[2]}, you and {introvert[0]} participated in {title}.
+                </div>
+            )
+            })    
+        }
+        else {
+            return hangouts.map(hang=>{
+                const { hang_id, date, introvert, title } = hang
+    
+            return (
+                // give it the key of the hangout id in case we want it later
+                <div style={hangBoxStyle} key={hang_id} onClick={()=>showModal(hang_id)}>
+                    {/* kind of awkward, gotta pluck the month from the backend's date and then grab the name from the month array */}
+                    On {months[date[0]-1]} {date[1]}, {date[2]}, you and {introvert[0]} participated in {title}.
+                </div>
+            )
+            })
+        }
     }
     
     function handleSubmit(event){
-        alterFilter(event.target.value)
+        const filter = event.target.value
+
+        alterFilter(filter)
+        if(filter === "all"){
+            alterFilteredHangs(false)
+        }
+        // we receive the introvert's id. iterate through the hangouts and create a new array of ones which have the introvert id, which gets set to filteredHangs
+        else {
+            let newHangs = []
+            const introvertId = parseInt(filter)
+            
+            for(let i=0;i<hangouts.length;i++){
+                let currentId = parseInt(hangouts[i].introvert[1])
+                if(currentId===introvertId){
+                    newHangs.push(Object.assign({}, hangouts[i]))
+                }
+            }
+            alterFilteredHangs(newHangs)
+        }
     }
 
         return (
@@ -86,8 +115,9 @@ function Hangouts(props){
                 <select id='filter' value={filterType} onChange={handleSubmit}>
                     <option value="" disabled>Select a Friend</option>
                     {introverts.map(int=>{
-                        return <option value={int.name} key={int.id}>{int.name}</option>
+                        return <option value={int.id} key={int.id}>{int.name}</option>
                     })}
+                    <option value='all'>Remove filter (show all)</option>
                 </select>
                 {displayHangs()}
             </div>
