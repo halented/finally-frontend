@@ -64,6 +64,10 @@ class App extends Component {
     
   }
 
+  updateUserDetails = (stuff) => {
+    console.log(stuff)
+  }
+
 
   mainApp = () => {
     return (
@@ -84,7 +88,7 @@ class App extends Component {
             <Route exact path='/hangouts' component={Hangouts}/>
             <Route exact path='/metrics' component={Metrics}/>
             <Route exact path="/settings" render={props => 
-                (<Settings {...props} logoutShow={this.logoutShow}/>)}/>
+                (<Settings {...props} logoutShow={this.logoutShow} userData={this.state.user} updateUserDetails={this.updateUserDetails}/>)}/>
           </Switch>
         </div>
       </Router>

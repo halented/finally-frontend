@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { styles } from '../../Styles';
-import { services } from '../../apiServices'
+// import { services } from '../../apiServices'
 
 const holder = Object.assign({}, styles.outerHangBox, styles.columnFlexbox)
 const shorterButton = {height: 'auto'}
@@ -11,7 +11,9 @@ class Settings extends Component {
     state = {
         show: false,
         howTo: false,
-        userData: ''
+        editUser: false,
+        showUser: false,
+        newInfo: {name: '', username: '', email: ''}
     }
 
     logout = () => {
@@ -23,33 +25,62 @@ class Settings extends Component {
 
     showModal = (val, kind='none') => {
         if(!val){
-            this.setState({show: false, userData: '', howTo: false})
+            this.setState({show: false, showUser: false, howTo: false, editUser: false})
             return
         }
         if(kind === "personal") {
-            services.fetchData()
-            .then(json=>this.setState({show: true, userData: json.user}))
+            this.setState({show: true, showUser: true})
         }
-        else {
+        else if(kind === 'howTo') {
             this.setState({show: true, howTo: true})
         }
     }
 
+    handleChange = (ev) => {
+        const key = ev.target.name
+        const val = ev.target.value
+
+        this.setState((prevState)=>({
+            ...prevState,
+            newInfo: {
+                ...prevState.newInfo,
+                [key]: val
+            }
+        }))
+
+        // [ev.target.name]: ev.target.value
+    }
+
     render(){
+        const { name, email, username} = this.props.userData
+        console.log(this.props.userData)
         return (
             <div style={holder}>
                 {this.state.show ? 
-                    <div style={styles.fuzzed} onClick={()=>this.showModal(false)}>
+                    <div style={styles.fuzzed}>
                         <div style={styles.modalContent}>
                             <span style={styles.closeModal} onClick={()=>this.showModal(false)}>&times;</span>
-                            {this.state.userData.name ? 
+                            {this.state.showUser ? 
                                 <div>
-                                    <div><span style={label}>NAME: </span>{this.state.userData.name}</div>
-                                    <div><span style={label}>EMAIL: </span>{this.state.userData.email}</div>
-                                    <div><span style={label}>USERNAME: </span>{this.state.userData.username}</div>
-                                    {/* <div style={{fontSize: 'small'}}>Click a Field to Edit</div> */}
+                                    <div><span style={label}>NAME: </span>{name}</div>
+                                    <div><span style={label}>EMAIL: </span>{email}</div>
+                                    <div><span style={label}>USERNAME: </span>{username}</div>
+                                    <button onClick={()=>this.setState({editUser: true, showUser: false})}>Edit Details</button>
                                 </div>
                             : 
+                                null
+                            }
+                            {this.state.editUser ? 
+                                <form onSubmit={()=>this.props.updateUserDetails(this.state.newInfo)} style={styles.columnFlexbox}>
+                                    <label>Name: </label>
+                                    <input placeholder={name} name='name' onChange={(ev)=>this.handleChange(ev)} value={this.state.newInfo.name}></input>
+                                    <label>Email: </label>
+                                    <input placeholder={email} name='email' onChange={(ev)=>this.handleChange(ev)} value={this.state.newInfo.email}></input>
+                                    <label>Username: </label>
+                                    <input placeholder={username} name='username' onChange={(ev)=>this.handleChange(ev)} value={this.state.newInfo.username}></input>
+                                    <button type='submit'>Save</button>
+                                </form>
+                            :
                                 null
                             }
                             {this.state.howTo ? 
