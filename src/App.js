@@ -64,8 +64,12 @@ class App extends Component {
     
   }
 
-  updateUserDetails = (stuff) => {
-    console.log(stuff)
+  updateUserDetails = (ev, newDetails) => {
+    ev.preventDefault()
+    services.updatePersonalDetails(newDetails)
+    .then(json => {
+      this.setState({user: json})
+    })
   }
 
 

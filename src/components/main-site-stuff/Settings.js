@@ -13,7 +13,7 @@ class Settings extends Component {
         howTo: false,
         editUser: false,
         showUser: false,
-        newInfo: {name: '', username: '', email: ''}
+        newInfo: {id: '', name: '', username: '', email: ''}
     }
 
     logout = () => {
@@ -47,13 +47,23 @@ class Settings extends Component {
                 [key]: val
             }
         }))
+    }
 
-        // [ev.target.name]: ev.target.value
+    handleEditSwitch = () => {
+        const { id, name, email, username} = this.props.userData
+        this.setState({
+            editUser: true, 
+            showUser: false, 
+            newInfo: {
+                name,
+                email,
+                username
+            }
+        })
     }
 
     render(){
         const { name, email, username} = this.props.userData
-        console.log(this.props.userData)
         return (
             <div style={holder}>
                 {this.state.show ? 
@@ -65,13 +75,13 @@ class Settings extends Component {
                                     <div><span style={label}>NAME: </span>{name}</div>
                                     <div><span style={label}>EMAIL: </span>{email}</div>
                                     <div><span style={label}>USERNAME: </span>{username}</div>
-                                    <button onClick={()=>this.setState({editUser: true, showUser: false})}>Edit Details</button>
+                                    <button onClick={this.handleEditSwitch}>Edit Details</button>
                                 </div>
                             : 
                                 null
                             }
                             {this.state.editUser ? 
-                                <form onSubmit={()=>this.props.updateUserDetails(this.state.newInfo)} style={styles.columnFlexbox}>
+                                <form onSubmit={(ev)=>this.props.updateUserDetails(ev, this.state.newInfo)} style={styles.columnFlexbox}>
                                     <label>Name: </label>
                                     <input placeholder={name} name='name' onChange={(ev)=>this.handleChange(ev)} value={this.state.newInfo.name}></input>
                                     <label>Email: </label>

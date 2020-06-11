@@ -10,7 +10,6 @@ it('renders without crashing', () => {
 
 describe("App", ()=>{
 
-
   it("has state", () => {
     const div = document.createElement('div');
     const app = ReactDOM.render(<App />, div)
