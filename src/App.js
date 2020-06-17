@@ -68,7 +68,7 @@ class App extends Component {
     ev.preventDefault()
     services.updatePersonalDetails(newDetails)
     .then(json => {
-      this.setState({user: json.user})
+      this.setState({user: json.user}, alert("Details Updated"))
     })
   }
 

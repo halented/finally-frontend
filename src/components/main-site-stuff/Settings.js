@@ -24,7 +24,6 @@ class Settings extends Component {
     }
 
     showModal = (val, kind='none') => {
-        console.log(this.props.userData)
         if(!val){
             this.setState({show: false, showUser: false, howTo: false, editUser: false})
             return
