@@ -50,7 +50,7 @@ class Settings extends Component {
     }
 
     handleEditSwitch = () => {
-        const { id, name, email, username} = this.props.userData
+        const { name, email, username } = this.props.userData
         this.setState({
             editUser: true, 
             showUser: false, 
