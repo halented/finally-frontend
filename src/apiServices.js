@@ -1,4 +1,4 @@
-const URL_ROOT = 'http://localhost:3000'
+const URL_ROOT = 'https://finally-backend.herokuapp.com'
 // http://localhost:3000
 // https://finally-backend.herokuapp.com
 const headers = () => {
