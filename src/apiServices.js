@@ -77,11 +77,21 @@ const fetchHangout = (id) => {
         })
 }
 
+const updatePersonalDetails = (postData) => {
+    return fetch(`${URL_ROOT}/users/${parseInt(localStorage.getItem('userId'))}`, {
+        method: 'PATCH', 
+        headers: headers(),
+        body: JSON.stringify(postData)})
+        .then(res=>{
+            return res.json()
+        })
+}
 const postPurpose = (postData) => {
     return fetch(`${URL_ROOT}/purposes`, {
         method: 'POST', 
         headers: headers(),
         body: postData})
+
         .then(res=>{
             return res.json()
         })
@@ -95,5 +105,6 @@ export const services = {
     signIn,
     fetchChartData,
     fetchHangout,
-    updateIntrovert
+    updateIntrovert,
+    updatePersonalDetails
 }

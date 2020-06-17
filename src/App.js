@@ -64,6 +64,14 @@ class App extends Component {
     
   }
 
+  updateUserDetails = (ev, newDetails) => {
+    ev.preventDefault()
+    services.updatePersonalDetails(newDetails)
+    .then(json => {
+      this.setState({user: json})
+    })
+  }
+
 
   mainApp = () => {
     return (
@@ -85,7 +93,7 @@ class App extends Component {
                 (<Hangouts {...props} introverts={this.state.introverts}/>)}/>
             <Route exact path='/metrics' component={Metrics}/>
             <Route exact path="/settings" render={props => 
-                (<Settings {...props} logoutShow={this.logoutShow}/>)}/>
+                (<Settings {...props} logoutShow={this.logoutShow} userData={this.state.user} updateUserDetails={this.updateUserDetails}/>)}/>
           </Switch>
         </div>
       </Router>
