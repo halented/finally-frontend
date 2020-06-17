@@ -7,9 +7,14 @@ const hangBoxStyle = Object.assign({}, styles.hangBox, styles.shadowed, {cursor:
 const outerHangStyle = Object.assign({}, styles.outerHangBox, styles.columnFlexbox)
 const h3Style = Object.assign({width: '75%'}, styles.shadowed)
 
-function Hangouts(){
+function Hangouts(props){
+    const {introverts} = props
+
     const [ hangouts, alterHangouts ] = useState([])
     useEffect(setHangouts, [])
+
+    const [ filteredHangs, alterFilteredHangs ] = useState(false)
+    const [ filterType, alterFilter ] = useState('')
 
     const [ show, alterShow ] = useState(false)
     const [ oneHang, alterOneHang ] = useState({})
@@ -33,21 +38,54 @@ function Hangouts(){
     }
 
     function displayHangs(){
-        return hangouts.map(hang=>{
-            let key = Object.keys(hang)[0]
-            let date = hang[key][1].split("-")
-            let id = hang[key][2]
+        if(filteredHangs){
+            return filteredHangs.map(hang=>{
+                const { hang_id, date, introvert, title } = hang
+    
+            return (
+                // give it the key of the hangout id in case we want it later
+                <div style={hangBoxStyle} key={hang_id} onClick={()=>showModal(hang_id)}>
+                    {/* kind of awkward, gotta pluck the month from the backend's date and then grab the name from the month array */}
+                    On {months[date[0]-1]} {date[1]}, {date[2]}, you and {introvert[0]} participated in {title}.
+                </div>
+            )
+            })    
+        }
+        else {
+            return hangouts.map(hang=>{
+                const { hang_id, date, introvert, title } = hang
+    
+            return (
+                // give it the key of the hangout id in case we want it later
+                <div style={hangBoxStyle} key={hang_id} onClick={()=>showModal(hang_id)}>
+                    {/* kind of awkward, gotta pluck the month from the backend's date and then grab the name from the month array */}
+                    On {months[date[0]-1]} {date[1]}, {date[2]}, you and {introvert[0]} participated in {title}.
+                </div>
+            )
+            })
+        }
+    }
+    
+    function handleSubmit(event){
+        const filter = event.target.value
 
-            for(let i=0;i<3;i++){
-                date[i] = i === 1 ? months[parseInt(date[i])-1] : parseInt(date[i])
+        alterFilter(filter)
+        if(filter === "all"){
+            alterFilteredHangs(false)
+        }
+        // we receive the introvert's id. iterate through the hangouts and create a new array of ones which have the introvert id, which gets set to filteredHangs
+        else {
+            let newHangs = []
+            const introvertId = parseInt(filter)
+            
+            for(let i=0;i<hangouts.length;i++){
+                let currentId = parseInt(hangouts[i].introvert[1])
+                if(currentId===introvertId){
+                    newHangs.push(Object.assign({}, hangouts[i]))
+                }
             }
-        return (
-            // give it the key of the hangout id in case we want it later
-            <div style={hangBoxStyle} key={id} onClick={()=>showModal(id)}>
-                On {date[1]} {date[2]}, {date[0]}, you and {hang[key][0]} participated in {key}.
-            </div>
-        )
-        })
+            alterFilteredHangs(newHangs)
+        }
     }
 
         return (
@@ -74,6 +112,13 @@ function Hangouts(){
                 : null}
                 
                 <h3 style={h3Style}>Previous Hangouts</h3>
+                <select id='filter' value={filterType} onChange={handleSubmit}>
+                    <option value="" disabled>Select a Friend</option>
+                    {introverts.map(int=>{
+                        return <option value={int.id} key={int.id}>{int.name}</option>
+                    })}
+                    <option value='all'>Remove filter (show all)</option>
+                </select>
                 {displayHangs()}
             </div>
         )
