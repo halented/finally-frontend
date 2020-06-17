@@ -30,6 +30,10 @@ export const styles = {
         flexDirection: 'column',
         alignItems: 'center'
     },
+    rowFlexbox: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
     fuzzed: {
         position: 'fixed',
         zIndex: '1',

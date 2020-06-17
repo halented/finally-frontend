@@ -1,4 +1,4 @@
-const URL_ROOT = 'http://localhost:3000'
+const URL_ROOT = 'https://finally-backend.herokuapp.com'
 // http://localhost:3000
 // https://finally-backend.herokuapp.com
 const headers = () => {
@@ -86,11 +86,22 @@ const updatePersonalDetails = (postData) => {
             return res.json()
         })
 }
+const postPurpose = (postData) => {
+    return fetch(`${URL_ROOT}/purposes`, {
+        method: 'POST', 
+        headers: headers(),
+        body: postData})
+
+        .then(res=>{
+            return res.json()
+        })
+}
 
 export const services = { 
     fetchData,
     postIntrovert,
     postHangout,
+    postPurpose,
     signIn,
     fetchChartData,
     fetchHangout,
