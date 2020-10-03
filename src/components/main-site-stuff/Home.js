@@ -104,7 +104,7 @@ class Home extends Component {
 
     savePurpose = (ev) => {
         ev.preventDefault()
-        console.log(ev.target.title.value)
+
         let postData = JSON.stringify({
             purpose: {
                 title: ev.target.title.value, 

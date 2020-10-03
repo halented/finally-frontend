@@ -74,6 +74,7 @@ class Settings extends Component {
 
     render(){
         const { name, email, username} = this.props.userData
+
         return (
             <div style={holder}>
                 {this.state.show ? 
@@ -119,7 +120,6 @@ class Settings extends Component {
                 : 
                     null
                 }
-                
                 <button onClick={this.logout} style={shorterButton}>
                     Logout
                 </button>
@@ -136,3 +136,4 @@ class Settings extends Component {
 }
 
 export default Settings
+
