@@ -1,6 +1,9 @@
 # FINALLY! AN APP FOR EXTROVERTS
 
-This project is hosted live at https://finally-app.herokuapp.com/#/
+*This project is hosted live at https://finally-app.herokuapp.com/#/*
+
+*This is the frontend repository. The backend repository can be found [here](https://github.com/halented/finally-backend).*
+
 
 Are you an extrovert? Do you find yourself confused and concerned when it comes to respecting the needs of your introvert friends?
 
