@@ -1,4 +1,4 @@
-const URL_ROOT = 'http://localhost:3000'
+const URL_ROOT = 'https://finally-backend.herokuapp.com'
 // http://localhost:3000
 // https://finally-backend.herokuapp.com
 const headers = () => {
@@ -7,97 +7,103 @@ const headers = () => {
         Accept: 'application/json',
         Authorization: `Bearer: ${localStorage.getItem('token')}`
     })
-  }
+}
 
 const signIn = (postData) => {
     return fetch(`${URL_ROOT}/auth`, {
-            method: 'POST',
-            headers: headers(),
-            body: JSON.stringify(postData)
-        })
-        .then(res=>{
+        method: 'POST',
+        headers: headers(),
+        body: JSON.stringify(postData)
+    })
+        .then(res => {
             return res.json()
         })
 }
 
 const fetchData = () => {
     return fetch(`${URL_ROOT}/users/${parseInt(localStorage.getItem('userId'))}`)
-    .then(res => res.json(), {
-        headers: headers()
-    })
+        .then(res => res.json(), {
+            headers: headers()
+        })
 }
 
 const fetchChartData = (year) => {
     return fetch(`${URL_ROOT}/users/${parseInt(localStorage.getItem('userId'))}/chart`, {
-        method: 'POST', 
+        method: 'POST',
         headers: headers(),
-        body: JSON.stringify({year: year})
+        body: JSON.stringify({ year: year })
     })
-    .then(res=> {
-        return res.json()
-    })
+        .then(res => {
+            return res.json()
+        })
 }
 
 const postIntrovert = (postData) => {
     return fetch(`${URL_ROOT}/introverts`, {
-        method: 'POST', 
+        method: 'POST',
         headers: headers(),
-        body: postData})
-        .then(res=>{
+        body: postData
+    })
+        .then(res => {
             return res.json()
         })
 }
 
 const updateIntrovert = (postData) => {
     return fetch(`${URL_ROOT}/introverts/${postData.id}`, {
-        method: 'PUT', 
+        method: 'PUT',
         headers: headers(),
-        body: JSON.stringify(postData)})
-        .then(res=>{
+        body: JSON.stringify(postData)
+    })
+        .then(res => {
             return res.json()
         })
 }
 
 const postHangout = (postData) => {
     return fetch(`${URL_ROOT}/hangouts`, {
-        method: 'POST', 
+        method: 'POST',
         headers: headers(),
-        body: postData})
-        .then(res=>{
+        body: postData
+    })
+        .then(res => {
             return res.json()
         })
 }
 
 const fetchHangout = (id) => {
     return fetch(`${URL_ROOT}/hangouts/${id}`, {
-        method: 'GET', 
-        headers: headers()})
-        .then(res=>{
+        method: 'GET',
+        headers: headers()
+    })
+        .then(res => {
             return res.json()
         })
 }
 
 const updatePersonalDetails = (postData) => {
     return fetch(`${URL_ROOT}/users/${parseInt(localStorage.getItem('userId'))}`, {
-        method: 'PATCH', 
+        method: 'PATCH',
         headers: headers(),
-        body: JSON.stringify(postData)})
-        .then(res=>{
+        body: JSON.stringify(postData)
+    })
+        .then(res => {
             return res.json()
         })
 }
 const postPurpose = (postData) => {
     return fetch(`${URL_ROOT}/purposes`, {
-        method: 'POST', 
+        method: 'POST',
         headers: headers(),
-        body: postData})
+        body: postData
+    })
 
-        .then(res=>{
+        .then(res => {
             return res.json()
         })
 }
 
-export const services = { 
+export const services = {
     fetchData,
     postIntrovert,
     postHangout,
